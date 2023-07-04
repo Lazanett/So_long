@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   side_map.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/07/03 15:23:36 by marvin            #+#    #+#             */
-/*   Updated: 2023/07/03 15:23:36 by marvin           ###   ########.fr       */
+/*   Created: 2023/07/04 10:03:44 by lazanett          #+#    #+#             */
+/*   Updated: 2023/07/04 10:18:16 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	first_line(t_struc *nb)
 	//printf("%d\n", count);
 	if ((count + 1) == nb->colonne) // + \n
 	{
-		//printf("1ere ligne ok");
+		//printf("\n1ere ligne ok");
 		return(0);
 	}
 	return (1);
@@ -66,7 +66,7 @@ int	left_col(t_struc *nb)
 	//printf("%d\n", count);
 	if (count == nb->ligne)
 	{
-		//printf("colonne de gauche ok");
+		//printf("\ncolonne de gauche ok");
 		return(0);
 	}
 	return (1);
@@ -95,10 +95,10 @@ int	right_col(t_struc *nb)
 	}
 	//printf("%d\n", nb->ligne);
 	//printf("%d\n", count);
-	if (count + 1 == nb->ligne)
+	if (count == nb->ligne)
 	{
-		//printf("colonne de droite ok");
-		return(0);
+		//printf("\ncolonne de droite ok");
+		return (0);
 	}
 	return (1);
 }
@@ -123,7 +123,7 @@ int	last_line(t_struc *nb)
 	//printf("%d\n", count);
 	if ((count + 1) == nb->colonne) // + \n
 	{
-		//printf("last ligne ok");
+		//printf("\nlast ligne ok");
 		return(0);
 	}
 	return (1);

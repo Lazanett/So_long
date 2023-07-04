@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:03:42 by lazanett          #+#    #+#             */
-/*   Updated: 2023/06/29 18:28:07 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/04 10:12:09 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,7 +94,7 @@ int	ft_size_map(t_struc *nb)
 	}
 	if (count == nb->ligne)
 	{
-		printf("OK");
+		//printf("OK");
 		return (0);
 	}	
 	else

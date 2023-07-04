@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 13:36:50 by lazanett          #+#    #+#             */
-/*   Updated: 2023/06/29 18:16:59 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/04 10:19:51 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,16 +27,20 @@ void	ft_init_struc(t_struc *elem)
 int	main(int ac, char **av)
 {
 	t_struc	elem;
-	int	i;
+	//int	i;
 
-	i = 0;
+	//i = 0;
 	if (ac == 2 && check_argv(av[1], ".ber") == 0)
 	{
 		ft_init_struc(&elem);
 		ft_init_tab(av[1], &elem); // == 0 alors on continue backtraking
 		if (ft_size_map(&elem) == 0 && ft_map_available(&elem) == 0)
 		{
-			
+			if (first_line(&elem) == 0 && left_col(&elem) == 0 && 
+				right_col(&elem) == 0 && last_line(&elem) == 0)
+			{
+				printf("\ntout est ok");
+			}
 		}
 	}
 	else
