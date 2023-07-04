@@ -6,7 +6,7 @@
 #    By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 13:51:45 by lazanett          #+#    #+#              #
-#    Updated: 2023/06/28 16:04:42 by lazanett         ###   ########.fr        #
+#    Updated: 2023/07/04 10:08:02 by lazanett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ MFLAGS = -L -lft -lXext -lX11 -lm -lbsd
 
 SRC =	src/main.c\
 		src/parsing_map.c\
+		src/side_map.c\
 
 #SRC_BONUS = 
 
