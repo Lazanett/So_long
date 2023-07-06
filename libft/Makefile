@@ -6,7 +6,7 @@
 #    By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/11/24 12:03:41 by lazanett          #+#    #+#              #
-#    Updated: 2023/06/28 13:40:57 by lazanett         ###   ########.fr        #
+#    Updated: 2023/06/28 16:50:44 by lazanett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -76,6 +76,7 @@ SRCS = src/ft_isalnum.c \
        src/get_next_line.c\
        src/get_next_line_utils.c \
        src/ft_free.c\
+       src/ft_perror.c\
 
 OBJS	= ${SRCS:.c=.o}
 

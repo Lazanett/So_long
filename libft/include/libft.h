@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:51:25 by lazanett          #+#    #+#             */
-/*   Updated: 2023/06/28 15:47:22 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/06/28 18:55:00 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,6 +28,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdarg.h>
+#include <errno.h>
 
 typedef struct s_list
 {
@@ -97,6 +98,7 @@ void		ft_putstr_fd(char *s, int fd);
 void		ft_putendl_fd(char *s, int fd);
 void		ft_putnbr_fd(int n, int fd);
 void		ft_strlcpymod(char *dst, char *src, size_t size);
+void		ft_perror(char *error);
 t_list		*ft_lstnew(void *content);
 void		ft_lstadd_front(t_list **lst, t_list *new);
 t_list		*ft_lstlast(t_list *lst);

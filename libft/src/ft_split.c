@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/17 10:38:56 by lazanett          #+#    #+#             */
-/*   Updated: 2022/11/30 13:04:10 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/06/28 16:24:47 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static char	*word_dup(const char *str, int start, int finish)
 	return (word);
 }	
 
-static char	**ft_free(char **split, int j)
+static char	**ft_free_split(char **split, int j)
 {
 	while (j)
 	{
@@ -73,7 +73,7 @@ static char	**ft_retrecir(char **split, const char *s, char c, int index)
 			split[j++] = word_dup(s, index, i);
 			if (!split [j - 1])
 			{
-				ft_free(split, j);
+				ft_free_split(split, j);
 				return (split);
 			}
 			index = -1;
