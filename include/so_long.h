@@ -6,24 +6,41 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:20:26 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/04 17:42:05 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/11 12:59:37 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include <unistd.h>
-# include <stdio.h>
 # include "../libft/include/libft.h"
-# include <limits.h>
-# include <stdlib.h>
 # include "../minilibx/mlx.h"
 # include "../minilibx/mlx_int.h"
 # include <X11/X.h>
 # include <X11/keysym.h>
-# include <fcntl.h>
-# include <stdbool.h>
+
+/*# define CRYSTAL "/img_xpm/crystal.xpm"
+# define EXIT "img_xpm/exit.xpm"
+# define HERBE "img_xpm/herbe.xpm"
+# define MINI_TREE "img_xpm/mini_tree.xpm"
+# define TREE "img_xpm/tree.xpm"
+# define PLAYER_BAS "img_xpm/perso/move_bas.xpm"
+# define PLAYER_ML1 "img_xpm/perso/moveL_1.xpm"
+# define PLAYER_ML2 "img_xpm/perso/moveL_2.xpm"
+# define PLAYER_ML3 "img_xpm/perso/moveL_3.xpm"
+# define PLAYER_ML4 "img_xpm/perso/moveL_4.xpm"
+# define PLAYER_MR1 "img_xpm/perso/moveR_1.xpm"
+# define PLAYER_MR2 "img_xpm/perso/moveR_2.xpm"
+# define PLAYER_MR3 "img_xpm/perso/moveR_3.xpm"
+# define PLAYER_MR4 "img_xpm/perso/moveR_4.xpm"
+# define ENNEMI_ML1 "img_xpm/ennemi/enL_1.xpm"
+# define ENNEMI_ML2 "img_xpm/ennemi/enL_2.xpm"
+# define ENNEMI_ML3 "img_xpm/ennemi/enL_3.xpm"
+# define ENNEMI_ML4 "img_xpm/ennemi/enL_4.xpm"
+# define ENNEMI_MR1 "img_xpm/ennemi/enR_1.xpm"
+# define ENNEMI_MR2 "img_xpm/ennemi/enR_2.xpm"
+# define ENNEMI_MR3 "img_xpm/ennemi/enR_3.xpm"
+# define ENNEMI_MR4 "img_xpm/ennemi/enR_4.xpm"*/
 
 typedef struct s_struc
 {
@@ -33,7 +50,6 @@ typedef struct s_struc
 	int		perso;
 	int		exit;
 	int		collect;
-	//int		way;
 	int		ligne;
 	int		colonne;
 	char	start;
@@ -52,12 +68,24 @@ typedef struct s_mini
 {
 	void	*mlx;
 	void	*window;
+	void	*crystal;
+	char	*filename;
+	int		img_width;
+	int		img_height;
 
 }	t_mini;
+
+//--------------------------------KEY.C------------------------------------//
+int		ft_key(int keycode, t_mini *mini);
+int		ft_mouse(t_mini *mini);
+void	tab_img(t_struc *nb, t_mini *mini);
+void	convertion(t_mini *mini);
+//--------------------------------------------------------------------------//
 
 //--------------------------------MAIN.C------------------------------------//
 void	ft_init_struc(t_struc *elem);
 void	ft_init_struc2(t_pos *pos);
+void	ft_init_struc3(t_mini *mini);
 int		check_argv(char *av, char *search);
 
 //--------------------------------------------------------------------------//
@@ -80,7 +108,7 @@ int	last_line(t_struc *nb);
 
 //--------------------------WAY.C-------------------------------------------//
 void	chemin(t_struc *nb, int j, int i);
-void backtraking_ok(t_struc *nb, t_pos *pos);
+void backtraking_ok(t_struc *nb, t_pos *pos, t_mini *mini);
 //--------------------------------------------------------------------------//
 
 #endif
