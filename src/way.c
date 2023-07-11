@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 11:08:38 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/05 10:46:49 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/10 16:19:38 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	chemin(t_struc *nb, int j, int i)
 {
-	printf("-- %c\n",nb->tab[j][i]);
+	//printf("-- %c\n",nb->tab[j][i]);
 	if (nb->collect == 0 && nb->exit == 0)
 		return;
 	if (nb->tab[j][i] == 'C')
@@ -31,15 +31,16 @@ void	chemin(t_struc *nb, int j, int i)
 	if (nb->tab[j][i - 1] != '1' && nb->tab[j][i - 1] != '\0') // haut
 		chemin(nb, j, i - 1);
 	return;
-
-
 }
 
-void	backtraking_ok(t_struc *nb, t_pos *pos)
+void	backtraking_ok(t_struc *nb, t_pos *pos, t_mini *mini)
 {
-	chemin(nb,  pos->p_ligne, pos->p_col);
+	chemin(nb, pos->p_ligne, pos->p_col);
 	if (nb->collect == 0 && nb->exit == 0)
-		return ;
+	{
+		tab_img(nb, mini);
+		//return ;
+	}
 	else
 	{
 		printf("error");
