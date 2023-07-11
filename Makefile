@@ -6,7 +6,7 @@
 #    By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 13:51:45 by lazanett          #+#    #+#              #
-#    Updated: 2023/07/04 17:36:52 by lazanett         ###   ########.fr        #
+#    Updated: 2023/07/10 15:01:56 by lazanett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC= 	src/main.c\
 		src/parsing_map.c\
 		src/side_map.c\
 		src/way.c\
+		src/key.c\
 
 PATH_MLX = minilibx
 
