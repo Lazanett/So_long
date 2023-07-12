@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:20:26 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/11 12:59:37 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/12 11:33:38 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
-/*# define CRYSTAL "/img_xpm/crystal.xpm"
+# define CRYSTAL "img_xpm/crystal.xpm"
 # define EXIT "img_xpm/exit.xpm"
 # define HERBE "img_xpm/herbe.xpm"
 # define MINI_TREE "img_xpm/mini_tree.xpm"
@@ -40,11 +40,12 @@
 # define ENNEMI_MR1 "img_xpm/ennemi/enR_1.xpm"
 # define ENNEMI_MR2 "img_xpm/ennemi/enR_2.xpm"
 # define ENNEMI_MR3 "img_xpm/ennemi/enR_3.xpm"
-# define ENNEMI_MR4 "img_xpm/ennemi/enR_4.xpm"*/
+# define ENNEMI_MR4 "img_xpm/ennemi/enR_4.xpm"
 
 typedef struct s_struc
 {
 	char	**tab;
+	char	**tab_copy;
 	char	*line;
 	int		fd;
 	int		perso;
@@ -69,7 +70,28 @@ typedef struct s_mini
 	void	*mlx;
 	void	*window;
 	void	*crystal;
-	char	*filename;
+	void	*exit;
+	void	*herbe;
+	void	*mini_tree;
+	void	*tree;
+	void	*player_bas;
+	void	*player_ml1;
+	void	*player_ml2;
+	void	*player_ml3;
+	void	*player_ml4;
+	void	*player_mr1;
+	void	*player_mr2;
+	void	*player_mr3;
+	void	*player_mr4;
+	void	*enl1;
+	void	*enl2;
+	void	*enl3;
+	void	*enl4;
+	void	*enr1;
+	void	*enr2;
+	void	*enr3;
+	void	*enr4;
+	//char	*filename;
 	int		img_width;
 	int		img_height;
 
@@ -107,8 +129,9 @@ int	last_line(t_struc *nb);
 //--------------------------------------------------------------------------//
 
 //--------------------------WAY.C-------------------------------------------//
+void	tab_copy(t_struc *nb);
 void	chemin(t_struc *nb, int j, int i);
-void backtraking_ok(t_struc *nb, t_pos *pos, t_mini *mini);
+void	backtraking_ok(t_struc *nb, t_pos *pos, t_mini *mini);
 //--------------------------------------------------------------------------//
 
 #endif
