@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:03:42 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/04 17:14:41 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/12 12:06:35 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,18 +23,23 @@ int	ft_init_tab(char *av, t_struc *elem)
 	if (elem->fd == -1)
 		return (1);
 	elem->tab = ft_malloc_tab(elem);
+	elem->tab_copy = ft_malloc_tab(elem);
 	elem->ligne = 0;
-	if (elem->tab)
+	if (elem->tab && elem->tab_copy)
 	{
 		elem->line = get_next_line(elem->fd);
 		elem->colonne = ft_strlen(elem->line);
 		while (elem->line)
 		{
-			printf("%s", elem->line);
-			elem->tab[elem->ligne++] = elem->line;
+			//printf("%s", elem->line);
+			elem->tab[elem->ligne] = elem->line;
+			elem->tab_copy[elem->ligne] = elem->line;
+			printf("%s", elem->tab_copy[elem->ligne]);
 			elem->line = get_next_line(elem->fd);
+			elem->ligne++;
 		}
 		elem->tab[elem->ligne] = NULL;
+		elem->tab_copy[elem->ligne] = NULL;
 	}
 	close(elem->fd);
 	return (0);
