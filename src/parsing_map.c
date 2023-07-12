@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:03:42 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/12 12:06:35 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/12 14:43:32 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,9 @@ int	ft_init_tab(char *av, t_struc *elem)
 		elem->colonne = ft_strlen(elem->line);
 		while (elem->line)
 		{
-			//printf("%s", elem->line);
-			elem->tab[elem->ligne] = elem->line;
-			elem->tab_copy[elem->ligne] = elem->line;
-			printf("%s", elem->tab_copy[elem->ligne]);
+			elem->tab[elem->ligne] = ft_strdup(elem->line);
+			elem->tab_copy[elem->ligne] = ft_strdup(elem->line);
+			printf("%s", elem->line);
 			elem->line = get_next_line(elem->fd);
 			elem->ligne++;
 		}
@@ -61,10 +60,11 @@ int	ft_count_line(t_struc *elem)
 
 char	**ft_malloc_tab(t_struc *elem)
 {
-	elem->tab = malloc (sizeof (char *) * (elem->ligne + 1));
-	if (!elem->tab)
+	char **tab;
+	tab = malloc (sizeof (char *) * (elem->ligne + 1));
+	if (!tab)
 		return (NULL);
-	return (elem->tab);
+	return (tab);
 }
 
 int	ft_size_map(t_struc *nb)

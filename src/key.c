@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 15:00:13 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/12 12:34:00 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:05:36 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,10 +22,25 @@ void	tab_img(t_struc *nb, t_mini *mini)
 	while (i < nb->ligne)
 	{
 		j = 0;
-		while (j < nb->colonne)
+		while (j <= nb->colonne)
 		{
-			//printf("coucou");
 			if (nb->tab[i][j] == '1')
+			{
+				mlx_put_image_to_window(mini->mlx, mini->window, mini->tree, (j * mini->img_width), (i * mini->img_height));
+			}
+			if (nb->tab[i][j] == '0')
+			{
+				mlx_put_image_to_window(mini->mlx, mini->window, mini->herbe, (j * mini->img_width), (i * mini->img_height));
+			}
+			if (nb->tab[i][j] == 'P')
+			{
+				mlx_put_image_to_window(mini->mlx, mini->window, mini->player_mr1, (j * mini->img_width), (i * mini->img_height));
+			}
+			if (nb->tab[i][j] == 'E')
+			{
+				mlx_put_image_to_window(mini->mlx, mini->window, mini->exit, (j * mini->img_width), (i * mini->img_height));
+			}
+			if (nb->tab[i][j] == 'C')
 			{
 				mlx_put_image_to_window(mini->mlx, mini->window, mini->crystal, (j * mini->img_width), (i * mini->img_height));
 			}
@@ -33,9 +48,6 @@ void	tab_img(t_struc *nb, t_mini *mini)
 		}
 		i++;
 	}
-	//printf("%d\n", nb->colonne);
-	//printf("%d\n", count);
-	
 }
 
 void	convertion(t_mini *mini)
@@ -64,19 +76,12 @@ void	convertion(t_mini *mini)
 	mini->enr4 = mlx_xpm_file_to_image(mini->mlx, ENNEMI_MR4, &mini->img_width, &mini->img_height);
 }
 
-int	ft_key(int keycode, t_mini *mini)
+int	ft_key(int keycode, t_mini *mini, t_struc *nb)
 {
-	if (keycode == XK_Escape)
+	if (keycode == XK_Up || keycode == XK_w)
 	{
-		mlx_destroy_display(mini->mlx);
-		mlx_destroy_window(mini->mlx, mini->window);
-		//message erreur de count de mouvement
-		//free
-		exit(0);
-	}
-	else if (keycode == XK_Up || keycode == XK_w)
-	{
-		//move vers le haut
+		// put image avec avec nv pos et ancienne
+		
 	}	
 	else if (keycode == XK_Left || keycode == XK_a)
 	{
@@ -90,6 +95,19 @@ int	ft_key(int keycode, t_mini *mini)
 	else if (keycode == XK_Down || keycode == XK_s)
 	{
 		//move bas
+	}
+	return (0);
+}
+
+int	ft_escape(int keycode, t_mini *mini)
+{
+	if (keycode == XK_Escape)
+	{
+		mlx_destroy_display(mini->mlx);
+		mlx_destroy_window(mini->mlx, mini->window);
+		//message erreur de count de mouvement
+		//free
+		exit(0);
 	}
 	return (0);
 }

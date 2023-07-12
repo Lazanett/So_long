@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 13:36:50 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/12 12:16:23 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/12 15:01:50 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,68 +17,30 @@ int	main(int ac, char **av)
 	t_struc	elem;
 	t_pos	pos;
 	t_mini	mini;
-	//int	i;
 
-	//i = 0;
 	if (ac == 2 && check_argv(av[1], ".ber") == 0)
 	{
-		ft_init_struc(&elem);
-		ft_init_struc2(&pos);
-		ft_init_struc3(&mini);
+		ft_init_struc(&elem, &pos, &mini);
 		ft_init_tab(av[1], &elem); // == 0 alors on continue backtraking
-		mini.mlx = mlx_init();
-		if (mini.mlx == NULL)
+		if (ft_game_ok(&elem, &pos) == 0)
 		{
-			return (1);
-		}
-		if (ft_size_map(&elem) == 0 && ft_map_available(&elem, &pos) == 0)
-		{
-			if (first_line(&elem) == 0 && left_col(&elem) == 0 && 
-				right_col(&elem) == 0 && last_line(&elem) == 0)
+			if (backtraking_ok(&elem, &pos) == 0)
 			{
-				//printf("\nside map ok");
+				mini.mlx = mlx_init();
+				if (mini.mlx == NULL)
+					return (1);
 				mini.window = mlx_new_window(mini.mlx, ((elem.colonne - 1) * 32), ((elem.ligne - 1) * 32), "Game");
-				backtraking_ok(&elem, &pos, &mini);
-				mlx_hook(mini.window, KeyPress, 1L<<0, ft_key, &mini);
-				mlx_hook(mini.window, ClientMessage, 1L<<5, ft_mouse, &mini);
-				mlx_loop(mini.mlx);
+				tab_img(&elem, &mini);
 			}
+			mlx_hook(mini.window, KeyPress, 1L<<0, ft_escape, &mini);
+			mlx_hook(mini.window, KeyPress, 1L<<0, ft_key, &mini);
+			mlx_hook(mini.window, ClientMessage, 1L<<5, ft_mouse, &mini);
+			mlx_loop(mini.mlx);
 		}
 	}
 	else
 		printf("mauvaises conditions");
 	return (0);
-}
-
-
-void	ft_init_struc(t_struc *elem)
-{
-	elem->tab = NULL;
-	elem->tab_copy = NULL;
-	elem->line = NULL;
-	elem->fd = 0;
-	elem->perso = 0;
-	elem->exit = 0;
-	elem->collect = 0;
-	elem->ligne = 0;
-	elem->colonne = 0;
-	elem->start = '\0';
-}
-
-void	ft_init_struc2(t_pos *pos)
-{
-	pos->p_ligne = 0;
-	pos->p_col = 0;
-	pos->exit_ligne = 0;
-	pos->exit_col = 0;
-}
-
-void	ft_init_struc3(t_mini *mini)
-{
-	mini->img_width = 32;
-	mini->img_height = 32;
-	mini->crystal = NULL;
-	//mini->filename = NULL;
 }
 
 int	check_argv(char *av, char *search) // verif fini par .ber  t que 
