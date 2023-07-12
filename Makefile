@@ -6,7 +6,7 @@
 #    By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 13:51:45 by lazanett          #+#    #+#              #
-#    Updated: 2023/07/10 15:01:56 by lazanett         ###   ########.fr        #
+#    Updated: 2023/07/12 14:49:02 by lazanett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,8 +21,9 @@ MFLAGS = -L -lft -lXext -lX11 -lm -lbsd
 SRC= 	src/main.c\
 		src/parsing_map.c\
 		src/side_map.c\
-		src/way.c\
+		src/backtraking.c\
 		src/key.c\
+		src/init.c\
 
 PATH_MLX = minilibx
 
