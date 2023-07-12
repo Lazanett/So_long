@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:20:26 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/12 11:33:38 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/12 14:57:57 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,7 +91,6 @@ typedef struct s_mini
 	void	*enr2;
 	void	*enr3;
 	void	*enr4;
-	//char	*filename;
 	int		img_width;
 	int		img_height;
 
@@ -99,15 +98,20 @@ typedef struct s_mini
 
 //--------------------------------KEY.C------------------------------------//
 int		ft_key(int keycode, t_mini *mini);
+int		ft_escape(int keycode, t_mini *mini);
 int		ft_mouse(t_mini *mini);
 void	tab_img(t_struc *nb, t_mini *mini);
 void	convertion(t_mini *mini);
 //--------------------------------------------------------------------------//
 
-//--------------------------------MAIN.C------------------------------------//
-void	ft_init_struc(t_struc *elem);
-void	ft_init_struc2(t_pos *pos);
+//--------------------------------INIT.C------------------------------------//
+void	ft_init_struc(t_struc *elem, t_pos *pos, t_mini *mini);
+void	ft_init_struc2(t_pos *pos, t_mini *mini);
 void	ft_init_struc3(t_mini *mini);
+void	ft_init_player(t_mini *mini);
+void	ft_init_ennemi(t_mini *mini);
+//--------------------------------------------------------------------------//
+//--------------------------------MAIN.C------------------------------------//
 int		check_argv(char *av, char *search);
 
 //--------------------------------------------------------------------------//
@@ -122,16 +126,16 @@ char	**ft_malloc_tab(t_struc *elem);
 //--------------------------------------------------------------------------//
 
 //--------------------------SIDE_MAP.C---------------------------------------//
+int	ft_game_ok(t_struc *nb, t_pos *pos);
 int	first_line(t_struc *nb);
 int	left_col(t_struc *nb);
 int	right_col(t_struc *nb);
 int	last_line(t_struc *nb);
 //--------------------------------------------------------------------------//
 
-//--------------------------WAY.C-------------------------------------------//
-void	tab_copy(t_struc *nb);
+//--------------------------BACKTRAKING.C------------------------------------//
 void	chemin(t_struc *nb, int j, int i);
-void	backtraking_ok(t_struc *nb, t_pos *pos, t_mini *mini);
+int		backtraking_ok(t_struc *nb, t_pos *pos);
 //--------------------------------------------------------------------------//
 
 #endif
