@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:20:26 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/12 14:57:57 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:23:41 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,6 +54,8 @@ typedef struct s_struc
 	int		ligne;
 	int		colonne;
 	char	start;
+	struct s_pos *pos;
+	struct s_mini *mini;
 }	t_struc;
 
 
@@ -61,8 +63,11 @@ typedef struct s_pos
 {
 	int	p_ligne;
 	int	p_col;
+	int	target_posl;
+	int	target_posc;
 	int	exit_ligne;
 	int	exit_col;
+	int	flag;
 }	t_pos;
 
 typedef struct s_mini
@@ -97,28 +102,29 @@ typedef struct s_mini
 }	t_mini;
 
 //--------------------------------KEY.C------------------------------------//
-int		ft_key(int keycode, t_mini *mini);
-int		ft_escape(int keycode, t_mini *mini);
-int		ft_mouse(t_mini *mini);
-void	tab_img(t_struc *nb, t_mini *mini);
-void	convertion(t_mini *mini);
+int		ft_key(int keycode, t_struc *nb);
+int		ft_escape(int keycode, t_struc *nb);
+int		ft_mouse(t_struc *nb);
+void	tab_img(t_struc *nb);
+void	convertion(t_struc *nb);
 //--------------------------------------------------------------------------//
 
 //--------------------------------INIT.C------------------------------------//
-void	ft_init_struc(t_struc *elem, t_pos *pos, t_mini *mini);
-void	ft_init_struc2(t_pos *pos, t_mini *mini);
-void	ft_init_struc3(t_mini *mini);
-void	ft_init_player(t_mini *mini);
-void	ft_init_ennemi(t_mini *mini);
+void	ft_init_struc(t_struc *elem);
+void	ft_init_struc2(t_struc *elem);
+void	ft_init_struc3(t_struc *elem);
+void	ft_init_player(t_struc *elem);
+void	ft_init_ennemi(t_struc *elem);
 //--------------------------------------------------------------------------//
+
 //--------------------------------MAIN.C------------------------------------//
 int		check_argv(char *av, char *search);
-
+int		victory(t_struc *nb);
 //--------------------------------------------------------------------------//
 
 //--------------------------------PARSING_MAP.C-----------------------------//
 int		ft_init_tab(char *av, t_struc *elem);
-int		ft_map_available(t_struc *elem, t_pos *data);
+int		ft_map_available(t_struc *nb);
 int		ft_size_map(t_struc *nb);
 int		first_line(t_struc *elem);
 int		ft_count_line(t_struc *elem);
@@ -126,16 +132,24 @@ char	**ft_malloc_tab(t_struc *elem);
 //--------------------------------------------------------------------------//
 
 //--------------------------SIDE_MAP.C---------------------------------------//
-int	ft_game_ok(t_struc *nb, t_pos *pos);
-int	first_line(t_struc *nb);
-int	left_col(t_struc *nb);
-int	right_col(t_struc *nb);
-int	last_line(t_struc *nb);
+int		ft_game_ok(t_struc *nb);
+int		first_line(t_struc *nb);
+int		left_col(t_struc *nb);
+int		right_col(t_struc *nb);
+int		last_line(t_struc *nb);
 //--------------------------------------------------------------------------//
 
 //--------------------------BACKTRAKING.C------------------------------------//
 void	chemin(t_struc *nb, int j, int i);
-int		backtraking_ok(t_struc *nb, t_pos *pos);
+int		backtraking_ok(t_struc *nb);
+//--------------------------------------------------------------------------//
+
+//-----------------------MOVE.C---------------------------------------------//
+void	move_up(t_struc *nb);
+void	move_left(t_struc *nb);
+void	move_right(t_struc *nb);
+void	move_down(t_struc *nb);
+int		move_ok(t_struc *nb);
 //--------------------------------------------------------------------------//
 
 #endif
