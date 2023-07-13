@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:03:42 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/13 13:05:04 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/13 18:35:25 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,13 @@ int	ft_size_map(t_struc *nb)
 	}
 	if (count == nb->ligne)
 		return (0);
-	return (1);
+	else
+	{
+		ft_putendl_fd("Error : nsize of map invalide", 2);
+		exit(0);
+		return (1);
+	}
+	
 }
 
 int	ft_map_available(t_struc *nb) 
@@ -127,5 +133,10 @@ int	ft_map_available(t_struc *nb)
 	if (nb->collect > 0 && nb->perso == 1 && nb->exit == 1)
 		return (0);
 	else
+	{
+		ft_putendl_fd("Error : nb of exit not ok or nb of perso or nb of collectible", 2);
+		exit(0);
 		return (1);
+	}
+		
 }

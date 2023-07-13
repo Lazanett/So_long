@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 13:36:50 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/13 15:01:26 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/13 18:29:42 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,44 +15,42 @@
 int	main(int ac, char **av)
 {
 	t_struc	elem;
-	//t_pos	pos;
-	//t_mini	mini;
 
-	if (ac == 2 && check_argv(av[1], ".ber") == 0)
+	if (check_argv(av[1], ".ber") == 0 && ac == 2)
 	{
-		ft_init_struc(&elem);//
-		ft_init_tab(av[1], &elem);//
-		if (ft_game_ok(&elem) == 0)//
+		ft_init_struc(&elem);
+		ft_init_tab(av[1], &elem);
+		if (ft_game_ok(&elem) == 0)
 		{
 			if (backtraking_ok(&elem) == 0)
 			{
-				elem.mini->mlx = mlx_init();//
+				elem.mini->mlx = mlx_init();
 				if (elem.mini->mlx == NULL)
 					return (1);
 				elem.mini->window = mlx_new_window(elem.mini->mlx, ((elem.colonne - 1) * 32), (elem.ligne * 32), "Game");
-				tab_img(&elem);//
+				tab_img(&elem);
 			}
-			//printf("%d\n",elem.pos->p_col);
-			//printf("%d\n", elem.pos->p_ligne);
-			//mlx_hook(mini.window, KeyPress, 1L<<0, ft_escape, &mini);
 			mlx_hook(elem.mini->window, KeyPress, 1L<<0, ft_key, &elem);
-			mlx_hook(elem.mini->window, ClientMessage, 1L<<5, ft_mouse, &elem.mini);
+			mlx_hook(elem.mini->window, ClientMessage, 1L<<5, ft_mouse, &elem);
 			mlx_loop(elem.mini->mlx);
 		}
 	}
 	else
-		printf("mauvaises conditions");
+	{
+		ft_putendl_fd("Error : bad number of argument", 2);
+		exit(0);
+	}	
 	return (0);
 }
 
-int	check_argv(char *av, char *search) // verif fini par .ber  t que 
+int	check_argv(char *av, char *search) // verif ca a la fin
 {
 	int	i;
 	int	len;
 
 	i = 0;
 	len = ft_strlen(av);
-	//if (len > 8)
+	if (len > 4)
 	{
 		len -= 4;
 		while ((av[len] || search[i]) && av[len] == search[i])
@@ -63,14 +61,18 @@ int	check_argv(char *av, char *search) // verif fini par .ber  t que
 	}
 	if (search[i] == '\0')
 		return (0);
-	//printf("pas correspondance");
-	return (1);
+	else
+	{
+		ft_putendl_fd("Error : not .ber", 2);
+		exit(0);
+		return (1);
+	}
 }
 
 int	victory(t_struc *nb)
 {
-	//afficher le count deplacement;
-	//free le tab
+	nb->count_move++;
+	ft_printf("%d = number of move\n", nb->count_move);
 	mlx_destroy_display(nb->mini->mlx);
 	mlx_destroy_window(nb->mini->mlx, nb->mini->window);
 	free(nb->mini->mlx);

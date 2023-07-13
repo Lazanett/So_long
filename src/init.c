@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:57:14 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/13 12:27:21 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/13 17:35:58 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	ft_init_struc(t_struc *elem)
 	elem->ligne = 0;
 	elem->colonne = 0;
 	elem->start = '\0';
+	elem->count_move = 0;
 	ft_init_struc2(elem);
 }
 
@@ -33,6 +34,8 @@ void	ft_init_struc2(t_struc *elem)
 {
 	elem->pos->p_ligne = 0;
 	elem->pos->p_col = 0;
+	elem->pos->target_posl = 0;
+	elem->pos->target_posc = 0;
 	elem->pos->exit_ligne = 0;
 	elem->pos->exit_col = 0;
 	ft_init_struc3(elem);

@@ -6,7 +6,7 @@
 #    By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 13:51:45 by lazanett          #+#    #+#              #
-#    Updated: 2023/07/12 16:04:03 by lazanett         ###   ########.fr        #
+#    Updated: 2023/07/13 17:17:40 by lazanett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRC= 	src/main.c\
 		src/key.c\
 		src/init.c\
 		src/move.c\
+		src/image.c\
 
 PATH_MLX = minilibx
 

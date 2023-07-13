@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 10:03:44 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/13 12:08:43 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/13 18:37:42 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ int	ft_game_ok(t_struc *nb)
 			right_col(nb) == 0 && last_line(nb) == 0)
 				return (0);
 	}
-	ft_perror("invalid map");
 	return (1);
 }
 
@@ -45,7 +44,12 @@ int	first_line(t_struc *nb)
 	}
 	if ((count + 1) == nb->colonne) // + \n
 		return (0);
-	return (1);
+	else
+	{
+		ft_putendl_fd("Error : contour de map invalide", 2);
+		exit(0);
+		return (1);
+	}
 }
 
 int	left_col(t_struc *nb)
@@ -67,10 +71,14 @@ int	left_col(t_struc *nb)
 		}
 		i++;
 	}
-
 	if (count == nb->ligne)
 		return (0);
-	return (1);
+	else
+	{
+		ft_putendl_fd("Error : contour de map invalide", 2);
+		exit(0);
+		return (1);
+	}
 }
 
 int	right_col(t_struc *nb)
@@ -94,7 +102,12 @@ int	right_col(t_struc *nb)
 	}
 	if (count == nb->ligne)
 		return (0);
-	return (1);
+	else
+	{
+		ft_putendl_fd("Error : contour de map invalide", 2);
+		exit(0);
+		return (1);
+	}
 }
 
 int	last_line(t_struc *nb)
@@ -112,8 +125,13 @@ int	last_line(t_struc *nb)
 			count++;
 		j++;
 	}
-
 	if ((count + 1) == nb->colonne) // + \n
 		return(0);
-	return (1);
+	else
+	{
+		ft_putendl_fd("Error : contour de map invalide", 2);
+		exit(0);
+		return (1);
+	}
+
 }
