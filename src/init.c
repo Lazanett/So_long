@@ -6,14 +6,16 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:57:14 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/12 13:57:47 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/13 12:27:21 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	ft_init_struc(t_struc *elem, t_pos *pos, t_mini *mini)
+void	ft_init_struc(t_struc *elem)
 {
+	elem->pos = malloc(sizeof(t_pos));
+	elem->mini = malloc(sizeof(t_mini));
 	elem->tab = NULL;
 	elem->tab_copy = NULL;
 	elem->line = NULL;
@@ -24,52 +26,52 @@ void	ft_init_struc(t_struc *elem, t_pos *pos, t_mini *mini)
 	elem->ligne = 0;
 	elem->colonne = 0;
 	elem->start = '\0';
-	ft_init_struc2(pos, mini);
+	ft_init_struc2(elem);
 }
 
-void	ft_init_struc2(t_pos *pos, t_mini *mini)
+void	ft_init_struc2(t_struc *elem)
 {
-	pos->p_ligne = 0;
-	pos->p_col = 0;
-	pos->exit_ligne = 0;
-	pos->exit_col = 0;
-	ft_init_struc3(mini);
+	elem->pos->p_ligne = 0;
+	elem->pos->p_col = 0;
+	elem->pos->exit_ligne = 0;
+	elem->pos->exit_col = 0;
+	ft_init_struc3(elem);
 }
 
-void	ft_init_struc3(t_mini *mini)
+void	ft_init_struc3(t_struc *elem)
 {
-	mini->img_width = 32;
-	mini->img_height = 32;
-	mini->crystal = NULL;
-	mini->exit = NULL;
-	mini->herbe = NULL;
-	mini->mini_tree = NULL;
-	mini->tree = NULL;
-	ft_init_player(mini);
-	ft_init_ennemi(mini);
+	elem->mini->img_width = 32;
+	elem->mini->img_height = 32;
+	elem->mini->crystal = NULL;
+	elem->mini->exit = NULL;
+	elem->mini->herbe = NULL;
+	elem->mini->mini_tree = NULL;
+	elem->mini->tree = NULL;
+	ft_init_player(elem);
+	ft_init_ennemi(elem);
 }
 
-void	ft_init_player(t_mini *mini)
+void	ft_init_player(t_struc *elem)
 {
-	mini->player_bas = NULL;
-	mini->player_ml1 = NULL;
-	mini->player_ml2 = NULL;
-	mini->player_ml3 = NULL;
-	mini->player_ml4 = NULL;
-	mini->player_mr1 = NULL;
-	mini->player_mr2 = NULL;
-	mini->player_mr3 = NULL;
-	mini->player_mr4 = NULL;
+	elem->mini->player_bas = NULL;
+	elem->mini->player_ml1 = NULL;
+	elem->mini->player_ml2 = NULL;
+	elem->mini->player_ml3 = NULL;
+	elem->mini->player_ml4 = NULL;
+	elem->mini->player_mr1 = NULL;
+	elem->mini->player_mr2 = NULL;
+	elem->mini->player_mr3 = NULL;
+	elem->mini->player_mr4 = NULL;
 }
 
-void	ft_init_ennemi(t_mini *mini)
+void	ft_init_ennemi(t_struc *elem)
 {
-	mini->enl1 = NULL;
-	mini->enl2 = NULL;
-	mini->enl3 = NULL;
-	mini->enl4 = NULL;
-	mini->enr1 = NULL;
-	mini->enr2 = NULL;
-	mini->enr3 = NULL;
-	mini->enr4 = NULL;
+	elem->mini->enl1 = NULL;
+	elem->mini->enl2 = NULL;
+	elem->mini->enl3 = NULL;
+	elem->mini->enl4 = NULL;
+	elem->mini->enr1 = NULL;
+	elem->mini->enr2 = NULL;
+	elem->mini->enr3 = NULL;
+	elem->mini->enr4 = NULL;
 }

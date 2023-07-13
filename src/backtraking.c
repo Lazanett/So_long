@@ -6,23 +6,22 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 11:08:38 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/12 14:51:47 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/13 14:28:52 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	backtraking_ok(t_struc *nb, t_pos *pos)
+int	backtraking_ok(t_struc *nb)
 {
-	chemin(nb, pos->p_ligne, pos->p_col);
+	chemin(nb, nb->pos->p_ligne, nb->pos->p_col);
 	if (nb->collect == 0 && nb->exit == 0)
 		return (0);
 	else
 	{
 		ft_perror("backtraking impossible");
 		return (1);
-	}	
-
+	}
 }
 
 void	chemin(t_struc *nb, int j, int i)

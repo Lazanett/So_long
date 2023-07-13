@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 13:36:50 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/12 15:01:50 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:01:26 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,27 +15,29 @@
 int	main(int ac, char **av)
 {
 	t_struc	elem;
-	t_pos	pos;
-	t_mini	mini;
+	//t_pos	pos;
+	//t_mini	mini;
 
 	if (ac == 2 && check_argv(av[1], ".ber") == 0)
 	{
-		ft_init_struc(&elem, &pos, &mini);
-		ft_init_tab(av[1], &elem); // == 0 alors on continue backtraking
-		if (ft_game_ok(&elem, &pos) == 0)
+		ft_init_struc(&elem);//
+		ft_init_tab(av[1], &elem);//
+		if (ft_game_ok(&elem) == 0)//
 		{
-			if (backtraking_ok(&elem, &pos) == 0)
+			if (backtraking_ok(&elem) == 0)
 			{
-				mini.mlx = mlx_init();
-				if (mini.mlx == NULL)
+				elem.mini->mlx = mlx_init();//
+				if (elem.mini->mlx == NULL)
 					return (1);
-				mini.window = mlx_new_window(mini.mlx, ((elem.colonne - 1) * 32), ((elem.ligne - 1) * 32), "Game");
-				tab_img(&elem, &mini);
+				elem.mini->window = mlx_new_window(elem.mini->mlx, ((elem.colonne - 1) * 32), (elem.ligne * 32), "Game");
+				tab_img(&elem);//
 			}
-			mlx_hook(mini.window, KeyPress, 1L<<0, ft_escape, &mini);
-			mlx_hook(mini.window, KeyPress, 1L<<0, ft_key, &mini);
-			mlx_hook(mini.window, ClientMessage, 1L<<5, ft_mouse, &mini);
-			mlx_loop(mini.mlx);
+			//printf("%d\n",elem.pos->p_col);
+			//printf("%d\n", elem.pos->p_ligne);
+			//mlx_hook(mini.window, KeyPress, 1L<<0, ft_escape, &mini);
+			mlx_hook(elem.mini->window, KeyPress, 1L<<0, ft_key, &elem);
+			mlx_hook(elem.mini->window, ClientMessage, 1L<<5, ft_mouse, &elem.mini);
+			mlx_loop(elem.mini->mlx);
 		}
 	}
 	else
@@ -63,4 +65,14 @@ int	check_argv(char *av, char *search) // verif fini par .ber  t que
 		return (0);
 	//printf("pas correspondance");
 	return (1);
+}
+
+int	victory(t_struc *nb)
+{
+	//afficher le count deplacement;
+	//free le tab
+	mlx_destroy_display(nb->mini->mlx);
+	mlx_destroy_window(nb->mini->mlx, nb->mini->window);
+	free(nb->mini->mlx);
+	exit (0);
 }

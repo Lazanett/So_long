@@ -6,15 +6,15 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 10:03:44 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/12 14:13:14 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/13 12:08:43 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-int	ft_game_ok(t_struc *nb, t_pos *pos)
+int	ft_game_ok(t_struc *nb)
 {
-	if (ft_size_map(nb) == 0 && ft_map_available(nb, pos) == 0)
+	if (ft_size_map(nb) == 0 && ft_map_available(nb) == 0)
 	{
 		if (first_line(nb) == 0 && left_col(nb) == 0 && 
 			right_col(nb) == 0 && last_line(nb) == 0)

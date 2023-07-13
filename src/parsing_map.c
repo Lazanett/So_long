@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:03:42 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/12 14:43:32 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/13 13:05:04 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	ft_init_tab(char *av, t_struc *elem)
 		{
 			elem->tab[elem->ligne] = ft_strdup(elem->line);
 			elem->tab_copy[elem->ligne] = ft_strdup(elem->line);
-			printf("%s", elem->line);
+			//printf("%s", elem->line);
 			elem->line = get_next_line(elem->fd);
 			elem->ligne++;
 		}
@@ -91,15 +91,11 @@ int	ft_size_map(t_struc *nb)
 		i++;
 	}
 	if (count == nb->ligne)
-	{
-		//printf("OK");
 		return (0);
-	}	
-	else
-		return (1);
+	return (1);
 }
 
-int	ft_map_available(t_struc *nb, t_pos *data) 
+int	ft_map_available(t_struc *nb) 
 {
 	int	i;
 	int	j;
@@ -112,14 +108,14 @@ int	ft_map_available(t_struc *nb, t_pos *data)
 		{
 			if (nb->tab[i][j] == 'P')
 			{
-				data->p_ligne = i;
-				data->p_col = j;
+				nb->pos->p_ligne = i;
+				nb->pos->p_col = j;
 				nb->perso++;
 			}
 			if (nb->tab[i][j] == 'E')
 			{
-				data->exit_ligne = i;
-				data->exit_col= j;
+				nb->pos->exit_ligne = i;
+				nb->pos->exit_col = j;
 				nb->exit++;
 			}
 			if (nb->tab[i][j] == 'C')

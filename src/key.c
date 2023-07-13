@@ -6,19 +6,19 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/10 15:00:13 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/12 15:05:36 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/13 15:05:53 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
 
-void	tab_img(t_struc *nb, t_mini *mini)
+void	tab_img(t_struc *nb)
 {
 	int	i;
 	int	j;
 
 	i = 0;
-	convertion(mini);
+	convertion(nb);
 	while (i < nb->ligne)
 	{
 		j = 0;
@@ -26,23 +26,24 @@ void	tab_img(t_struc *nb, t_mini *mini)
 		{
 			if (nb->tab[i][j] == '1')
 			{
-				mlx_put_image_to_window(mini->mlx, mini->window, mini->tree, (j * mini->img_width), (i * mini->img_height));
+				mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->tree, (j * nb->mini->img_width), (i * nb->mini->img_height));
 			}
 			if (nb->tab[i][j] == '0')
 			{
-				mlx_put_image_to_window(mini->mlx, mini->window, mini->herbe, (j * mini->img_width), (i * mini->img_height));
+				mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->herbe, (j * nb->mini->img_width), (i * nb->mini->img_height));
 			}
 			if (nb->tab[i][j] == 'P')
 			{
-				mlx_put_image_to_window(mini->mlx, mini->window, mini->player_mr1, (j * mini->img_width), (i * mini->img_height));
+				mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_mr1, (j * nb->mini->img_width), (i * nb->mini->img_height));
 			}
 			if (nb->tab[i][j] == 'E')
 			{
-				mlx_put_image_to_window(mini->mlx, mini->window, mini->exit, (j * mini->img_width), (i * mini->img_height));
+				mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->exit, (j * nb->mini->img_width), (i * nb->mini->img_height));
 			}
 			if (nb->tab[i][j] == 'C')
 			{
-				mlx_put_image_to_window(mini->mlx, mini->window, mini->crystal, (j * mini->img_width), (i * mini->img_height));
+				mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->crystal, (j * nb->mini->img_width), (i * nb->mini->img_height));
+				nb->collect++;
 			}
 			j++;
 		}
@@ -50,73 +51,77 @@ void	tab_img(t_struc *nb, t_mini *mini)
 	}
 }
 
-void	convertion(t_mini *mini)
+void	convertion(t_struc *nb)
 {
-	mini->crystal = mlx_xpm_file_to_image(mini->mlx, CRYSTAL, &mini->img_width, &mini->img_height);
-	mini->exit = mlx_xpm_file_to_image(mini->mlx, EXIT, &mini->img_width, &mini->img_height);
-	mini->herbe = mlx_xpm_file_to_image(mini->mlx, HERBE, &mini->img_width, &mini->img_height);
-	mini->mini_tree = mlx_xpm_file_to_image(mini->mlx, MINI_TREE, &mini->img_width, &mini->img_height);
-	mini->tree = mlx_xpm_file_to_image(mini->mlx, TREE, &mini->img_width, &mini->img_height);
-	mini->player_bas = mlx_xpm_file_to_image(mini->mlx, PLAYER_BAS, &mini->img_width, &mini->img_height);
-	mini->player_ml1 = mlx_xpm_file_to_image(mini->mlx, PLAYER_ML1, &mini->img_width, &mini->img_height);
-	mini->player_ml2 = mlx_xpm_file_to_image(mini->mlx, PLAYER_ML2, &mini->img_width, &mini->img_height);
-	mini->player_ml3 = mlx_xpm_file_to_image(mini->mlx, PLAYER_ML3, &mini->img_width, &mini->img_height);
-	mini->player_ml4 = mlx_xpm_file_to_image(mini->mlx, PLAYER_ML4, &mini->img_width, &mini->img_height);
-	mini->player_mr1 = mlx_xpm_file_to_image(mini->mlx, PLAYER_MR1, &mini->img_width, &mini->img_height);
-	mini->player_mr2 = mlx_xpm_file_to_image(mini->mlx, PLAYER_MR2, &mini->img_width, &mini->img_height);
-	mini->player_mr3 = mlx_xpm_file_to_image(mini->mlx, PLAYER_MR3, &mini->img_width, &mini->img_height);
-	mini->player_mr4 = mlx_xpm_file_to_image(mini->mlx, PLAYER_MR4, &mini->img_width, &mini->img_height);
-	mini->enl1 = mlx_xpm_file_to_image(mini->mlx, ENNEMI_ML1, &mini->img_width, &mini->img_height);
-	mini->enl2 = mlx_xpm_file_to_image(mini->mlx, ENNEMI_ML2, &mini->img_width, &mini->img_height);
-	mini->enl3 = mlx_xpm_file_to_image(mini->mlx, ENNEMI_ML3, &mini->img_width, &mini->img_height);
-	mini->enl4 = mlx_xpm_file_to_image(mini->mlx, ENNEMI_ML4, &mini->img_width, &mini->img_height);
-	mini->enr1 = mlx_xpm_file_to_image(mini->mlx, ENNEMI_MR1, &mini->img_width, &mini->img_height);
-	mini->enr2 = mlx_xpm_file_to_image(mini->mlx, ENNEMI_MR2, &mini->img_width, &mini->img_height);
-	mini->enr3 = mlx_xpm_file_to_image(mini->mlx, ENNEMI_MR3, &mini->img_width, &mini->img_height);
-	mini->enr4 = mlx_xpm_file_to_image(mini->mlx, ENNEMI_MR4, &mini->img_width, &mini->img_height);
+	nb->mini->crystal = mlx_xpm_file_to_image(nb->mini->mlx, CRYSTAL, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->exit = mlx_xpm_file_to_image(nb->mini->mlx, EXIT, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->herbe = mlx_xpm_file_to_image(nb->mini->mlx, HERBE, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->mini_tree = mlx_xpm_file_to_image(nb->mini->mlx, MINI_TREE, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->tree = mlx_xpm_file_to_image(nb->mini->mlx, TREE, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->player_bas = mlx_xpm_file_to_image(nb->mini->mlx, PLAYER_BAS, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->player_ml1 = mlx_xpm_file_to_image(nb->mini->mlx, PLAYER_ML1, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->player_ml2 = mlx_xpm_file_to_image(nb->mini->mlx, PLAYER_ML2, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->player_ml3 = mlx_xpm_file_to_image(nb->mini->mlx, PLAYER_ML3, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->player_ml4 = mlx_xpm_file_to_image(nb->mini->mlx, PLAYER_ML4, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->player_mr1 = mlx_xpm_file_to_image(nb->mini->mlx, PLAYER_MR1, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->player_mr2 = mlx_xpm_file_to_image(nb->mini->mlx, PLAYER_MR2, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->player_mr3 = mlx_xpm_file_to_image(nb->mini->mlx, PLAYER_MR3, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->player_mr4 = mlx_xpm_file_to_image(nb->mini->mlx, PLAYER_MR4, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->enl1 = mlx_xpm_file_to_image(nb->mini->mlx, ENNEMI_ML1, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->enl2 = mlx_xpm_file_to_image(nb->mini->mlx, ENNEMI_ML2, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->enl3 = mlx_xpm_file_to_image(nb->mini->mlx, ENNEMI_ML3, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->enl4 = mlx_xpm_file_to_image(nb->mini->mlx, ENNEMI_ML4, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->enr1 = mlx_xpm_file_to_image(nb->mini->mlx, ENNEMI_MR1, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->enr2 = mlx_xpm_file_to_image(nb->mini->mlx, ENNEMI_MR2, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->enr3 = mlx_xpm_file_to_image(nb->mini->mlx, ENNEMI_MR3, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->enr4 = mlx_xpm_file_to_image(nb->mini->mlx, ENNEMI_MR4, &nb->mini->img_width, &nb->mini->img_height);
 }
 
-int	ft_key(int keycode, t_mini *mini, t_struc *nb)
+int	ft_key(int keycode, t_struc *nb)
 {
-	if (keycode == XK_Up || keycode == XK_w)
-	{
-		// put image avec avec nv pos et ancienne
-		
-	}	
-	else if (keycode == XK_Left || keycode == XK_a)
-	{
-		//move gauche
-	}
-	else if (keycode == XK_Right || keycode == XK_d)
-	{
-		//move droit
-	}
-		
-	else if (keycode == XK_Down || keycode == XK_s)
-	{
-		//move bas
-	}
-	return (0);
-}
-
-int	ft_escape(int keycode, t_mini *mini)
-{
+	//(void) pos;
+	//(void) mini;
+	//
+	
 	if (keycode == XK_Escape)
 	{
-		mlx_destroy_display(mini->mlx);
-		mlx_destroy_window(mini->mlx, mini->window);
+		
+		mlx_destroy_display(nb->mini->mlx);
+		mlx_destroy_window(nb->mini->mlx, nb->mini->window);
 		//message erreur de count de mouvement
 		//free
 		exit(0);
 	}
+	if (keycode == XK_Up || keycode == XK_w)
+	{
+		move_up(nb);
+	}	
+	else if (keycode == XK_Left || keycode == XK_a)
+	{
+		move_left(nb);
+	}
+	else if (keycode == XK_Right || keycode == XK_d)
+	{
+		move_right(nb);
+	}
+	else if (keycode == XK_Down || keycode == XK_s)
+	{
+		move_down(nb);
+	}
 	return (0);
 }
 
-int	ft_mouse(t_mini *mini)
+/*int	ft_escape(int keycode, t_mini *mini)
+{
+	
+	return (0);
+}*/
+
+int	ft_mouse(t_struc *nb)
 {
 	//count mouv;
-	mlx_destroy_window(mini->mlx, mini->window);
-	mlx_destroy_display(mini->mlx);
+	mlx_destroy_window(nb->mini->mlx, nb->mini->window);
+	mlx_destroy_display(nb->mini->mlx);
 	//free
 	exit(0);
 }
