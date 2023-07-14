@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:20:26 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/14 12:22:04 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/14 15:33:32 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,9 +101,7 @@ int		backtraking_ok(t_struc *nb);
 void	tab_img(t_struc *nb);
 void	verif_img(t_struc *nb);
 void	convertion_base(t_struc *nb);
-void	convertion(t_struc *nb);
-void	convertion2(t_struc *nb);
-void	convertion_attack(t_struc *nb);
+
 //--------------------------------INIT.C------------------------------------//
 void	ft_init_struc(t_struc *elem);
 void	ft_init_struc2(t_struc *elem);
@@ -119,7 +117,6 @@ int		ft_mouse(t_struc *nb);
 
 //--------------------------------MAIN.C------------------------------------//
 int		check_argv(char *av, char *search);
-int		victory(t_struc *nb);
 //--------------------------------------------------------------------------//
 
 //-----------------------MOVE.C---------------------------------------------//
@@ -147,4 +144,20 @@ int		right_col(t_struc *nb);
 int		last_line(t_struc *nb);
 //--------------------------------------------------------------------------//
 
+//-----------------------------UTILS.C---------------------------------------//
+int		victory(t_struc *nb);
+void	clear_img(t_struc *nb);
+//--------------------------------------------------------------------------//
+
+
+//---------------------IMAGE_BONUS-----------------------------------------//
+void	convertion(t_struc *nb);
+void	convertion2(t_struc *nb);
+void	convertion_attack(t_struc *nb);
+//--------------------------------------------------------------------------//
+
+//------------------------UTILS_BONUS----------------------------------------//
+void	clear_player(t_struc *nb);
+void	clear_attack(t_struc *nb);
+//--------------------------------------------------------------------------//
 #endif
