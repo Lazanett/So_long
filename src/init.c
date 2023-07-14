@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:57:14 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/13 19:22:23 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/14 11:52:07 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,12 +69,8 @@ void	ft_init_player(t_struc *elem)
 
 void	ft_init_ennemi(t_struc *elem)
 {
-	elem->mini->enl1 = NULL;
-	elem->mini->enl2 = NULL;
-	elem->mini->enl3 = NULL;
-	elem->mini->enl4 = NULL;
-	elem->mini->enr1 = NULL;
-	elem->mini->enr2 = NULL;
-	elem->mini->enr3 = NULL;
-	elem->mini->enr4 = NULL;
+	elem->mini->attack1 = NULL;
+	elem->mini->attack2 = NULL;
+	elem->mini->attack3 = NULL;
+	elem->mini->attack4 = NULL;
 }

@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:03:29 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/13 19:48:31 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/14 10:53:48 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,12 +23,12 @@ void	move_up(t_struc *nb)
 	{
 		if (nb->tab[nb->pos->p_ligne][nb->pos->p_col] == 'E')
 		{
-			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_bas, (nb->pos->p_col + 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
+			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_mr1, (nb->pos->p_col + 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->exit, nb->pos->p_col * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 		}
 		else
 		{
-			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_bas, nb->pos->p_col * nb->mini->img_width, (nb->pos->p_ligne - 1) * nb->mini->img_height);
+			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_mr1, nb->pos->p_col * nb->mini->img_width, (nb->pos->p_ligne - 1) * nb->mini->img_height);
 			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->herbe, nb->pos->p_col * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 		}
 		nb->pos->p_ligne -= 1;
@@ -45,12 +45,12 @@ void	move_left(t_struc *nb)
 	{
 		if (nb->tab[nb->pos->p_ligne][nb->pos->p_col] == 'E')
 		{
-			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_bas, (nb->pos->p_col + 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
+			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_mr1, (nb->pos->p_col + 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->exit, nb->pos->p_col * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 		}
 		else
 		{
-			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_bas, (nb->pos->p_col - 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
+			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_mr1, (nb->pos->p_col - 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->herbe, nb->pos->p_col * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 		}
 		nb->pos->p_col -= 1;
@@ -67,12 +67,12 @@ void	move_right(t_struc *nb)
 	{
 		if (nb->tab[nb->pos->p_ligne][nb->pos->p_col] == 'E')
 		{
-			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_bas, (nb->pos->p_col + 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
+			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_mr1, (nb->pos->p_col + 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->exit, nb->pos->p_col * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 		}
 		else
 		{
-			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_bas, (nb->pos->p_col + 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
+			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_mr1, (nb->pos->p_col + 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->herbe, nb->pos->p_col * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 		}
 		nb->pos->p_col += 1;
@@ -89,12 +89,12 @@ void	move_down(t_struc *nb)
 	{
 		if (nb->tab[nb->pos->p_ligne][nb->pos->p_col] == 'E')
 		{
-			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_bas, (nb->pos->p_col + 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
+			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_mr1, (nb->pos->p_col + 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->exit, nb->pos->p_col * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 		}
 		else
 		{
-			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_bas, nb->pos->p_col * nb->mini->img_width, (nb->pos->p_ligne + 1) * nb->mini->img_height);
+			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_mr1, nb->pos->p_col * nb->mini->img_width, (nb->pos->p_ligne + 1) * nb->mini->img_height);
 			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->herbe, nb->pos->p_col * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 		}
 		nb->pos->p_ligne += 1;
