@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:20:26 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/13 17:16:26 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/14 12:22:04 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,28 +19,23 @@
 # include <X11/X.h>
 # include <X11/keysym.h>
 
-# define CRYSTAL "img_xpm/crystal.xpm"
-# define EXIT "img_xpm/exit.xpm"
-# define HERBE "img_xpm/herbe.xpm"
-# define MINI_TREE "img_xpm/mini_tree.xpm"
-# define TREE "img_xpm/tree.xpm"
-# define PLAYER_BAS "img_xpm/perso/move_bas.xpm"
-# define PLAYER_ML1 "img_xpm/perso/moveL_1.xpm"
-# define PLAYER_ML2 "img_xpm/perso/moveL_2.xpm"
-# define PLAYER_ML3 "img_xpm/perso/moveL_3.xpm"
-# define PLAYER_ML4 "img_xpm/perso/moveL_4.xpm"
-# define PLAYER_MR1 "img_xpm/perso/moveR_1.xpm"
-# define PLAYER_MR2 "img_xpm/perso/moveR_2.xpm"
-# define PLAYER_MR3 "img_xpm/perso/moveR_3.xpm"
-# define PLAYER_MR4 "img_xpm/perso/moveR_4.xpm"
-# define ENNEMI_ML1 "img_xpm/ennemi/enL_1.xpm"
-# define ENNEMI_ML2 "img_xpm/ennemi/enL_2.xpm"
-# define ENNEMI_ML3 "img_xpm/ennemi/enL_3.xpm"
-# define ENNEMI_ML4 "img_xpm/ennemi/enL_4.xpm"
-# define ENNEMI_MR1 "img_xpm/ennemi/enR_1.xpm"
-# define ENNEMI_MR2 "img_xpm/ennemi/enR_2.xpm"
-# define ENNEMI_MR3 "img_xpm/ennemi/enR_3.xpm"
-# define ENNEMI_MR4 "img_xpm/ennemi/enR_4.xpm"
+# define CRYSTAL "img_xpm/48/crystal.xpm"
+# define EXIT "img_xpm/48/exit.xpm"
+# define HERBE "img_xpm/48/herbe.xpm"
+# define TREE "img_xpm/48/tree.xpm"
+# define PLAYER_BAS "img_xpm/48/move_bas.xpm"
+# define PLAYER_ML1 "img_xpm/48/moveL_1.xpm"
+# define PLAYER_ML2 "img_xpm/48/moveL_2.xpm"
+# define PLAYER_ML3 "img_xpm/48/moveL_3.xpm"
+# define PLAYER_ML4 "img_xpm/48/moveL_4.xpm"
+# define PLAYER_MR1 "img_xpm/48/moveR_1.xpm"
+# define PLAYER_MR2 "img_xpm/48/moveR_2.xpm"
+# define PLAYER_MR3 "img_xpm/48/moveR_3.xpm"
+# define PLAYER_MR4 "img_xpm/48/moveR_4.xpm"
+# define ATTACK1 "img_xpm/48/attack1.xpm"
+# define ATTACK2 "img_xpm/48/attack2.xpm"
+# define ATTACK3 "img_xpm/48/attack3.xpm"
+# define ATTACK4 "img_xpm/48/attack4.xpm"
 
 typedef struct s_struc
 {
@@ -88,14 +83,10 @@ typedef struct s_mini
 	void	*player_mr2;
 	void	*player_mr3;
 	void	*player_mr4;
-	void	*enl1;
-	void	*enl2;
-	void	*enl3;
-	void	*enl4;
-	void	*enr1;
-	void	*enr2;
-	void	*enr3;
-	void	*enr4;
+	void	*attack1;
+	void	*attack2;
+	void	*attack3;
+	void	*attack4;
 	int		img_width;
 	int		img_height;
 
@@ -109,9 +100,10 @@ int		backtraking_ok(t_struc *nb);
 //----------------------------IMAGE.C---------------------------------------//
 void	tab_img(t_struc *nb);
 void	verif_img(t_struc *nb);
+void	convertion_base(t_struc *nb);
 void	convertion(t_struc *nb);
 void	convertion2(t_struc *nb);
-void	convertion3(t_struc *nb);
+void	convertion_attack(t_struc *nb);
 //--------------------------------INIT.C------------------------------------//
 void	ft_init_struc(t_struc *elem);
 void	ft_init_struc2(t_struc *elem);
