@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:03:42 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/13 18:35:25 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/14 15:01:51 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,28 +77,26 @@ int	ft_size_map(t_struc *nb)
 	i = 0;
 	j_temp = 0;
 	count = 0;
-	while (i < nb->ligne)
+	//printf("%d\n",nb->ligne);
+	
+	//printf("%d\n",nb->colonne);
+	while (i < (nb->ligne - 1))
 	{
 		j = 0;
-		while (j < nb->colonne)
-		{
+		while (nb->tab[i][j] != '\n')
 			j++;
-			if (i == 0)
-				j_temp = j;
-		}
-		if (j_temp == j)
+		//printf("%d\n", j);
+		if (j == (nb->colonne - 1))
 			count++;
 		i++;
 	}
-	if (count == nb->ligne)
+	if (count == (nb->ligne -1 ))
 		return (0);
 	else
 	{
-		ft_putendl_fd("Error : nsize of map invalide", 2);
-		exit(0);
+		ft_putendl_fd("Error : size of map invalide", 2);
 		return (1);
 	}
-	
 }
 
 int	ft_map_available(t_struc *nb) 

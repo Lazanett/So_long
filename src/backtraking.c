@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 11:08:38 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/13 14:28:52 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/14 16:20:53 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,24 +28,25 @@ void	chemin(t_struc *nb, int j, int i)
 {
 	if (nb->tab_copy)
 	{
-		//printf("%d\n", nb->ligne);
-		//printf("-- %c\n",nb->tab_copy[j][i]);
 		if (nb->collect == 0 && nb->exit == 0)
-			return;
+			return ;
 		if (nb->tab_copy[j][i] == 'C')
 			nb->collect--;
 		if (nb->tab_copy[j][i] == 'E')
 			nb->exit--;
 		nb->tab_copy[j][i] = '1';
-		if (nb->tab_copy[j + 1][i] != '1' && nb->tab_copy[j + 1][i] != '\0') // droite
+		if (nb->tab_copy[j + 1][i] != '1' && \
+				nb->tab_copy[j + 1][i] != '\0')
 			chemin(nb, j + 1, i);
-		if (nb->tab_copy[j][i + 1] != '1' && nb->tab_copy[j][i + 1] != '\0') // bas
+		if (nb->tab_copy[j][i + 1] != '1' && \
+				nb->tab_copy[j][i + 1] != '\0')
 			chemin(nb, j, i + 1);
-		if (nb->tab_copy[j - 1][i] != '1' && nb->tab_copy[j - 1][i] != '\0') // gauche
+		if (nb->tab_copy[j - 1][i] != '1' && \
+				nb->tab_copy[j - 1][i] != '\0')
 			chemin(nb, j - 1, i);
-		if (nb->tab_copy[j][i - 1] != '1' && nb->tab_copy[j][i - 1] != '\0') // haut
+		if (nb->tab_copy[j][i - 1] != '1' && \
+				nb->tab_copy[j][i - 1] != '\0')
 			chemin(nb, j, i - 1);
 		return ;
 	}
 }
-

@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 10:03:44 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/13 18:37:42 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/14 14:42:02 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@ int	ft_game_ok(t_struc *nb)
 			right_col(nb) == 0 && last_line(nb) == 0)
 				return (0);
 	}
+	else
+
+		exit(0);
 	return (1);
 }
 
