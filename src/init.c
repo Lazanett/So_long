@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 13:57:14 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/13 17:35:58 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/13 19:22:23 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ void	ft_init_struc2(t_struc *elem)
 
 void	ft_init_struc3(t_struc *elem)
 {
-	elem->mini->img_width = 32;
-	elem->mini->img_height = 32;
+	elem->mini->img_width = 48;
+	elem->mini->img_height = 48;
 	elem->mini->crystal = NULL;
 	elem->mini->exit = NULL;
 	elem->mini->herbe = NULL;

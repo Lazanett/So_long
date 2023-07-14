@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 13:36:50 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/13 18:29:42 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/14 10:28:42 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ int	main(int ac, char **av)
 				elem.mini->mlx = mlx_init();
 				if (elem.mini->mlx == NULL)
 					return (1);
-				elem.mini->window = mlx_new_window(elem.mini->mlx, ((elem.colonne - 1) * 32), (elem.ligne * 32), "Game");
+				elem.mini->window = mlx_new_window(elem.mini->mlx, ((elem.colonne - 1) * 48), (elem.ligne * 48), "Game");
 				tab_img(&elem);
 			}
 			mlx_hook(elem.mini->window, KeyPress, 1L<<0, ft_key, &elem);
@@ -43,7 +43,7 @@ int	main(int ac, char **av)
 	return (0);
 }
 
-int	check_argv(char *av, char *search) // verif ca a la fin
+int	check_argv(char *av, char *search)
 {
 	int	i;
 	int	len;

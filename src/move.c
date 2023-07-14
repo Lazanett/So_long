@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/12 16:03:29 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/13 17:46:38 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/13 19:48:31 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ void	move_up(t_struc *nb)
 
 	nb->pos->target_posl = nb->pos->p_ligne - 1;
 	nb->pos->target_posc = nb->pos->p_col;
+	//printf("%d = wight\n", nb->mini->img_width);
+	//printf("%d = height\n", nb->mini->img_height);
 	if (move_ok(nb) == 0)
 	{
 		if (nb->tab[nb->pos->p_ligne][nb->pos->p_col] == 'E')
