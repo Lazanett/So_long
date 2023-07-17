@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:14:53 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/14 16:27:03 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/17 11:35:21 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,11 +19,12 @@ void	tab_img(t_struc *nb)
 
 	i = 0;
 	convertion_base(nb);
-	while (i < nb->ligne)
+	while (i < nb->ligne - 1)
 	{
 		j = 0;
 		while (j <= nb->colonne)
 		{
+			//printf("%c\n", nb->tab[i][j]);
 			if (nb->tab[i][j] == '1')
 			{
 				mlx_put_image_to_window(nb->mini->mlx, \
@@ -64,9 +65,7 @@ void	tab_img(t_struc *nb)
 void	verif_img(t_struc *nb)
 {
 	ft_printf("probleme img\n");
-	mlx_destroy_window(nb->mini->mlx, nb->mini->window);
-	mlx_destroy_display(nb->mini->mlx);
-	free(nb->mini->mlx);
+	exit_game(nb);
 	exit(0);
 }
 

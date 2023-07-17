@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 10:03:44 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/14 14:42:02 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/17 16:06:46 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,22 @@
 
 int	ft_game_ok(t_struc *nb)
 {
-	if (ft_size_map(nb) == 0 && ft_map_available(nb) == 0)
-	{
-		if (first_line(nb) == 0 && left_col(nb) == 0 && 
+	if (ft_map_available(nb) == 0)
+	{ 
+		if (ft_size_map(nb) == 0)
+		{
+			if (first_line(nb) == 0 && left_col(nb) == 0 && 
 			right_col(nb) == 0 && last_line(nb) == 0)
 				return (0);
+			else
+				free_parsing(nb);
+		
+		}
+		else
+		free_parsing(nb);
 	}
 	else
-
-		exit(0);
+		free_parsing(nb);
 	return (1);
 }
 
@@ -49,8 +56,7 @@ int	first_line(t_struc *nb)
 		return (0);
 	else
 	{
-		ft_putendl_fd("Error : contour de map invalide", 2);
-		exit(0);
+		ft_putendl_fd("Error : side map invalid", 2);
 		return (1);
 	}
 }
@@ -78,8 +84,7 @@ int	left_col(t_struc *nb)
 		return (0);
 	else
 	{
-		ft_putendl_fd("Error : contour de map invalide", 2);
-		exit(0);
+		ft_putendl_fd("Error : side map invalid", 2);
 		return (1);
 	}
 }
@@ -107,8 +112,7 @@ int	right_col(t_struc *nb)
 		return (0);
 	else
 	{
-		ft_putendl_fd("Error : contour de map invalide", 2);
-		exit(0);
+		ft_putendl_fd("Error : side map invalid", 2);
 		return (1);
 	}
 }
@@ -132,8 +136,7 @@ int	last_line(t_struc *nb)
 		return(0);
 	else
 	{
-		ft_putendl_fd("Error : contour de map invalide", 2);
-		exit(0);
+		ft_putendl_fd("Error : side map invalid", 2);
 		return (1);
 	}
 

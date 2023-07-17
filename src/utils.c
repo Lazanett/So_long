@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 15:08:13 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/14 16:48:36 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/17 16:18:26 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,42 @@ int	victory(t_struc *nb)
 	nb->count_move++;
 	ft_printf("%d = number of move\n", nb->count_move);
 	clear_img(nb);
+	if (nb->mini->window)
+	{
+		mlx_clear_window(nb->mini->mlx, nb->mini->window);
+		mlx_destroy_window(nb->mini->mlx, nb->mini->window);
+	}
+	mlx_destroy_display(nb->mini->mlx);
+	free(nb->pos);
+	free(nb->mini->mlx);
+	free(nb->mini);
+	ft_free(nb->tab);
+	exit (0);
+}
+
+void	exit_game(t_struc *nb)
+{
+	clear_img(nb);
+	if (nb->mini->window)
+	{
+		mlx_clear_window(nb->mini->mlx, nb->mini->window);
+		mlx_destroy_window(nb->mini->mlx, nb->mini->window);
+	}
+	mlx_destroy_display(nb->mini->mlx);
+	free(nb->pos);
+	free(nb->mini->mlx);
+	free(nb->mini);
+	ft_free(nb->tab);
+	exit(0);
+}
+
+void	free_parsing(t_struc *nb)
+{
 	ft_free(nb->tab);
 	ft_free(nb->tab_copy);
-	if (nb->mini->mlx)
-		mlx_destroy_display(nb->mini->mlx);
-	if (nb->mini->window)
-		mlx_destroy_window(nb->mini->mlx, nb->mini->window);
-	//ft_free(nb->mini->mlx);
-	exit (0);
+	free(nb->pos);
+	free(nb->mini);
+	exit(0);
 }
 
 void	clear_img(t_struc *nb)

@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 13:36:50 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/14 16:46:34 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/17 18:19:05 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int	main(int ac, char **av)
 {
 	t_struc	elem;
 
-	if (check_argv(av[1], ".ber") == 0 && ac == 2)
+	if (ac == 2 && check_argv(av[1], ".ber") == 0)
 	{
 		ft_init_struc(&elem);
 		ft_init_tab(av[1], &elem);
@@ -35,14 +35,10 @@ int	main(int ac, char **av)
 			mlx_hook(elem.mini->window, ClientMessage, 1L<<5, ft_mouse , &elem);
 			mlx_loop(elem.mini->mlx);
 		}
-		ft_free(elem.mini->mlx);
-		exit (0);
 	}
 	else
-	{
 		ft_putendl_fd("Error : bad number of argument", 2);
-		exit(0);
-	}	
+	exit(0);
 	return (0);
 }
 
@@ -53,13 +49,22 @@ int	check_argv(char *av, char *search)
 
 	i = 0;
 	len = ft_strlen(av);
-	if (len > 4)
+	if (check_absolu(av, "map/", len) == 1)
 	{
-		len -= 4;
-		while ((av[len] || search[i]) && av[len] == search[i])
+		if (ft_strlen(av) == 4)
 		{
-			len++;
-			i++;
+			ft_putendl_fd("Error : the map have no name", 2);
+			exit(0);
+			return (1);
+		}
+		if (len > 4)
+		{
+			len -= 4;
+			while ((av[len] || search[i]) && av[len] == search[i])
+			{
+				len++;
+				i++;
+			}
 		}
 	}
 	if (search[i] == '\0')
@@ -70,4 +75,32 @@ int	check_argv(char *av, char *search)
 		exit(0);
 		return (1);
 	}
+}
+
+int	check_absolu(char *av, char *search, int len)
+{
+	int	i;
+
+	i = 0;
+	while ((av[i] && search[i]) && av[i] == search[i])
+		i++;
+	if (i == 4)
+	{
+		if (ft_strlen(av) == 8)
+		{
+			ft_putendl_fd("Error : the map have no name", 2);
+			exit(0);
+			return (1);
+		}
+		if (len > 8)
+		{
+			len -= 4;
+			while ((av[len] || search[i]) && av[len] == search[i])
+			{
+				len++;
+				i++;
+			}
+		}
+	}
+	return (1);
 }

@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:03:42 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/14 15:01:51 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/17 17:27:52 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,25 @@ int	ft_init_tab(char *av, t_struc *elem)
 {
 	elem->fd = open(av, O_RDONLY);
 	if (elem->fd == -1)
+	{
+		ft_putendl_fd("Error : open map impossible", 2);
+		free(elem->mini);
+		free(elem->pos);
+		exit(0);
 		return (1);
+	}
 	elem->ligne = ft_count_line(elem);
+	//printf("%d count line\n", elem->ligne);
 	close(elem->fd);
 	elem->fd = open(av, O_RDONLY);
 	if (elem->fd == -1)
+	{
+		ft_putendl_fd("Error : open map impossible", 2);
+		free(elem->mini);
+		free(elem->pos);
+		exit(0);
 		return (1);
+	}
 	elem->tab = ft_malloc_tab(elem);
 	elem->tab_copy = ft_malloc_tab(elem);
 	elem->ligne = 0;
@@ -34,9 +47,11 @@ int	ft_init_tab(char *av, t_struc *elem)
 			elem->tab[elem->ligne] = ft_strdup(elem->line);
 			elem->tab_copy[elem->ligne] = ft_strdup(elem->line);
 			//printf("%s", elem->line);
+			free(elem->line);
 			elem->line = get_next_line(elem->fd);
 			elem->ligne++;
 		}
+		free(elem->line);
 		elem->tab[elem->ligne] = NULL;
 		elem->tab_copy[elem->ligne] = NULL;
 	}
@@ -53,8 +68,10 @@ int	ft_count_line(t_struc *elem)
 	while (elem->line)
 	{		
 		count++;
+		free(elem->line);
 		elem->line = get_next_line(elem->fd);
 	}
+	free(elem->line);
 	return (count);
 }
 
@@ -71,11 +88,9 @@ int	ft_size_map(t_struc *nb)
 {
 	int	i;
 	int	j;
-	int	j_temp;
 	int	count;
 
 	i = 0;
-	j_temp = 0;
 	count = 0;
 	//printf("%d\n",nb->ligne);
 	
@@ -90,11 +105,11 @@ int	ft_size_map(t_struc *nb)
 			count++;
 		i++;
 	}
-	if (count == (nb->ligne -1 ))
+	if (count == (nb->ligne -1))
 		return (0);
 	else
 	{
-		ft_putendl_fd("Error : size of map invalide", 2);
+		ft_putendl_fd("Error : size of map invalid", 2);
 		return (1);
 	}
 }
@@ -132,9 +147,7 @@ int	ft_map_available(t_struc *nb)
 		return (0);
 	else
 	{
-		ft_putendl_fd("Error : nb of exit not ok or nb of perso or nb of collectible", 2);
-		exit(0);
+		ft_putendl_fd("Error : number of element", 2);
 		return (1);
 	}
-		
 }
