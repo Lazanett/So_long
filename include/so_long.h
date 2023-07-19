@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:20:26 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/18 16:44:43 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/19 15:48:41 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,8 @@ typedef struct s_pos
 	int	target_posc;
 	int	exit_ligne;
 	int	exit_col;
+	int	m_ligne;
+	int	m_col;
 }	t_pos;
 
 typedef struct s_mini
@@ -102,6 +104,7 @@ int		backtraking_ok(t_struc *nb);
 void	tab_img(t_struc *nb);
 void	verif_img(t_struc *nb);
 void	convertion_base(t_struc *nb);
+void	convertion_base2(t_struc *nb);
 //---------------------------------------------------------------------------//
 
 //--------------------------------INIT.C------------------------------------//
@@ -132,6 +135,8 @@ int		move_ok(t_struc *nb);
 
 //--------------------------------PARSING_MAP.C-----------------------------//
 int		ft_init_tab(char *av, t_struc *elem);
+void	empty_tab(t_struc *elem);
+int		empty_line(t_struc *elem);
 int		ft_map_available(t_struc *nb);
 int		ft_size_map(t_struc *nb);
 int		first_line(t_struc *elem);
