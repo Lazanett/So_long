@@ -6,7 +6,7 @@
 #    By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 13:51:45 by lazanett          #+#    #+#              #
-#    Updated: 2023/07/19 10:39:50 by lazanett         ###   ########.fr        #
+#    Updated: 2023/07/19 11:46:30 by lazanett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,6 @@ SRC_BONUS = src/parsing_map.c\
 			bonus/main_bonus.c\
 			bonus/move_bonus.c\
 			bonus/utils_bonus.c\
-			bonus/anim_bonus.c\
 			src/check_arg.c\
 			src/side_map.c\
 			src/key.c\
