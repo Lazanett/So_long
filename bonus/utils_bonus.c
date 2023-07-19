@@ -6,11 +6,26 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 15:17:59 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/14 15:31:49 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/18 15:09:18 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../include/so_long.h"
+
+void	clear_img_bonus(t_struc *nb)
+{
+	if (nb->mini->crystal)
+		mlx_destroy_image(nb->mini->mlx, nb->mini->crystal);
+	if (nb->mini->exit)
+		mlx_destroy_image(nb->mini->mlx, nb->mini->exit);
+	if (nb->mini->herbe)
+		mlx_destroy_image(nb->mini->mlx, nb->mini->herbe);
+	if (nb->mini->tree)
+		mlx_destroy_image(nb->mini->mlx, nb->mini->tree);
+	if (nb->mini->player_mr1)
+		mlx_destroy_image(nb->mini->mlx, nb->mini->player_mr1);
+	clear_player(nb);
+}
 
 void	clear_player(t_struc *nb)
 {
@@ -22,15 +37,13 @@ void	clear_player(t_struc *nb)
 		mlx_destroy_image(nb->mini->mlx, nb->mini->player_ml3);
 	if (nb->mini->player_ml4)
 		mlx_destroy_image(nb->mini->mlx, nb->mini->player_ml4);
-	if (nb->mini->player_mr1)
-		(nb->mini->mlx, nb->mini->player_mr1);
 	if (nb->mini->player_mr2)
 		mlx_destroy_image(nb->mini->mlx, nb->mini->player_mr2);
 	if (nb->mini->player_mr3)
 		mlx_destroy_image(nb->mini->mlx, nb->mini->player_mr3);
 	if (nb->mini->player_mr4)
 		mlx_destroy_image(nb->mini->mlx, nb->mini->player_mr4);
-	convertion_attack(nb);
+	clear_attack(nb);
 }
 
 void	clear_attack(t_struc *nb)
