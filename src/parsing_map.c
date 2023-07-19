@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:03:42 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/19 10:02:21 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/19 16:03:31 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,9 @@
 
 int	ft_init_tab(char *av, t_struc *elem)
 {
+	int	i;
+
+	i = 0;
 	elem->fd = open(av, O_RDONLY);
 	if (elem->fd == -1)
 	{
@@ -41,23 +44,42 @@ int	ft_init_tab(char *av, t_struc *elem)
 	if (elem->tab && elem->tab_copy)
 	{
 		elem->line = get_next_line(elem->fd);
-		elem->colonne = ft_strlen(elem->line);
-		while (elem->line)
+		if (elem->line)
 		{
-			elem->tab[elem->ligne] = ft_strdup(elem->line);
-			elem->tab_copy[elem->ligne] = ft_strdup(elem->line);
-			elem->ligne++;
-			//printf("%s", elem->line);
+			elem->colonne = ft_strlen(elem->line);
+			//printf("%d\n", elem->colonne);
+			while (elem->line)
+			{
+				elem->tab[elem->ligne] = ft_strdup(elem->line);
+				elem->tab_copy[elem->ligne] = ft_strdup(elem->line);
+				elem->ligne++;
+				//printf("%s", elem->line);
+				free(elem->line);
+				elem->line = get_next_line(elem->fd);
+			}
 			free(elem->line);
-			elem->line = get_next_line(elem->fd);
+			elem->tab[elem->ligne] = NULL;
+			elem->tab_copy[elem->ligne] = NULL;
 		}
-		free(elem->line);
-		//printf("%d\n", elem->ligne);
-		elem->tab[elem->ligne] = NULL;
-		elem->tab_copy[elem->ligne] = NULL;
+		else
+		{
+			close(elem->fd);
+			empty_tab(elem);
+		}
 	}
 	close(elem->fd);
 	return (0);
+}
+
+
+void	empty_tab(t_struc *elem)
+{
+	free(elem->tab);
+	free(elem->tab_copy);
+	free(elem->pos);
+	free(elem->mini);
+	ft_putendl_fd("Error : no array", 2);
+	exit(0);
 }
 
 int	ft_count_line(t_struc *elem)
@@ -78,7 +100,7 @@ int	ft_count_line(t_struc *elem)
 
 char	**ft_malloc_tab(t_struc *elem)
 {
-	char **tab;
+	char	**tab;
 	tab = malloc (sizeof (char *) * (elem->ligne + 1));
 	if (!tab)
 		return (NULL);
@@ -93,15 +115,11 @@ int	ft_size_map(t_struc *nb)
 
 	i = 0;
 	count = 0;
-	//printf("%d\n",nb->ligne);
-	
-	//printf("%d\n",nb->colonne);
 	while (i < (nb->ligne - 1))
 	{
 		j = 0;
 		while (nb->tab[i][j] != '\n')
 			j++;
-		//printf("%d\n", j);
 		if (j == (nb->colonne - 1))
 			count++;
 		i++;
@@ -127,6 +145,7 @@ int	ft_map_available(t_struc *nb)
 		j = 0;
 		while (j < nb->colonne)
 		{
+			ft_printf("%c", nb->tab[i][j]);
 			if (nb->tab[i][j] == 'P')
 			{
 				nb->pos->p_ligne = i;

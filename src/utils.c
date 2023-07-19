@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 15:08:13 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/18 17:14:02 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/19 13:40:42 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,4 +69,8 @@ void	clear_img(t_struc *nb)
 		mlx_destroy_image(nb->mini->mlx, nb->mini->tree);
 	if (nb->mini->player_mr1)
 		mlx_destroy_image(nb->mini->mlx, nb->mini->player_mr1);
+	if (nb->mini->player_ml1)
+		mlx_destroy_image(nb->mini->mlx, nb->mini->player_ml1);
+	if (nb->mini->player_bas)
+		mlx_destroy_image(nb->mini->mlx, nb->mini->player_bas);
 }

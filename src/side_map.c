@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 10:03:44 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/18 18:16:52 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/19 14:59:34 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -140,8 +140,11 @@ int	invalid_char(t_struc *nb)
 				nb->tab[i][j] != '1' && nb->tab[i][j] != '0' \
 				&& nb->tab[i][j] != 'P' && nb->tab[i][j] != '\n'\
 				&& nb->tab[i][j] != '\0')
+			{
 				return (1);
-
+				ft_putendl_fd("Error : invalid caractere", 2);
+				free_parsing(nb);
+			}
 			j++;
 		}
 		i++;

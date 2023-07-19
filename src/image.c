@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:14:53 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/19 09:54:05 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/19 11:10:53 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,4 +90,22 @@ void	convertion_base(t_struc *nb)
 			PLAYER_MR1, &nb->mini->img_width, &nb->mini->img_height);
 	if (nb->mini->player_mr1 == NULL)
 		verif_img(nb);
+	convertion_base2(nb);
+}
+
+void	convertion_base2(t_struc *nb)
+{
+	nb->mini->player_bas = mlx_xpm_file_to_image(nb->mini->mlx, PLAYER_BAS, &nb->mini->img_width, &nb->mini->img_height);
+	if (nb->mini->player_bas == NULL)
+	{	
+		printf("coucou");
+		verif_img(nb);
+	}
+	nb->mini->player_ml1 = mlx_xpm_file_to_image(nb->mini->mlx, PLAYER_ML1, &nb->mini->img_width, &nb->mini->img_height);
+	if (nb->mini->player_ml1 == NULL)
+	{
+		printf("coucou2");
+		verif_img(nb);
+	}
+		
 }

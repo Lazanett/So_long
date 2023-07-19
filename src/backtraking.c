@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 11:08:38 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/18 17:20:20 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/19 12:52:35 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,12 +15,16 @@
 int	backtraking_ok(t_struc *nb)
 {
 	chemin(nb, nb->pos->p_ligne, nb->pos->p_col);
-	ft_free(nb->tab_copy);
+
 	if (nb->collect == 0 && nb->exit == 0)
+	{
+		ft_free(nb->tab_copy);
 		return (0);
+	}
 	else
 	{
 		ft_putendl_fd("backtraking impossible", 2);
+		free_parsing(nb);
 		return (1);
 	}
 }
