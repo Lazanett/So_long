@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:03:42 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/17 17:27:52 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/19 10:02:21 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,12 +46,13 @@ int	ft_init_tab(char *av, t_struc *elem)
 		{
 			elem->tab[elem->ligne] = ft_strdup(elem->line);
 			elem->tab_copy[elem->ligne] = ft_strdup(elem->line);
+			elem->ligne++;
 			//printf("%s", elem->line);
 			free(elem->line);
 			elem->line = get_next_line(elem->fd);
-			elem->ligne++;
 		}
 		free(elem->line);
+		//printf("%d\n", elem->ligne);
 		elem->tab[elem->ligne] = NULL;
 		elem->tab_copy[elem->ligne] = NULL;
 	}
@@ -110,6 +111,7 @@ int	ft_size_map(t_struc *nb)
 	else
 	{
 		ft_putendl_fd("Error : size of map invalid", 2);
+		free_parsing(nb);
 		return (1);
 	}
 }
@@ -148,6 +150,7 @@ int	ft_map_available(t_struc *nb)
 	else
 	{
 		ft_putendl_fd("Error : number of element", 2);
+		free_parsing(nb);
 		return (1);
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 11:08:38 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/17 14:52:44 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/18 17:20:20 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,11 @@ int	backtraking_ok(t_struc *nb)
 {
 	chemin(nb, nb->pos->p_ligne, nb->pos->p_col);
 	ft_free(nb->tab_copy);
-	//ft_printf("coucou");
 	if (nb->collect == 0 && nb->exit == 0)
 		return (0);
 	else
 	{
-		ft_perror("backtraking impossible");
+		ft_putendl_fd("backtraking impossible", 2);
 		return (1);
 	}
 }

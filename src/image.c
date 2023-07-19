@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:14:53 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/17 11:35:21 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/19 09:54:05 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,11 @@ void	tab_img(t_struc *nb)
 
 	i = 0;
 	convertion_base(nb);
-	while (i < nb->ligne - 1)
+	while (i < nb->ligne)
 	{
 		j = 0;
-		while (j <= nb->colonne)
+		while (j <= nb->colonne && nb->tab[i][j] != '\0') // dire a will
 		{
-			//printf("%c\n", nb->tab[i][j]);
 			if (nb->tab[i][j] == '1')
 			{
 				mlx_put_image_to_window(nb->mini->mlx, \
