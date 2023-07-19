@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:27:39 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/18 14:33:27 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/19 12:47:04 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ void	move_up_bonus(t_struc *nb)
 		}
 		nb->pos->p_ligne -= 1;
 		nb->count_move++;
+		ft_printf("%d = number of move\n", nb->count_move);
 	}
 }
 
@@ -45,16 +46,17 @@ void	move_left_bonus(t_struc *nb)
 			game_over(nb);
 		else if (nb->tab[nb->pos->p_ligne][nb->pos->p_col] == 'E')
 		{
-			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_mr1, (nb->pos->p_col - 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
+			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_ml1, (nb->pos->p_col - 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->exit, nb->pos->p_col * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 		}
 		else
 		{
-			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_mr1, (nb->pos->p_col - 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
+			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_ml1, (nb->pos->p_col - 1) * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->herbe, nb->pos->p_col * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 		}
 		nb->pos->p_col -= 1;
 		nb->count_move++;
+		ft_printf("%d = number of move\n", nb->count_move);
 	}
 }
 
@@ -78,6 +80,7 @@ void	move_right_bonus(t_struc *nb)
 		}
 		nb->pos->p_col += 1;
 		nb->count_move++;
+		ft_printf("%d = number of move\n", nb->count_move);
 	}
 }
 
@@ -91,16 +94,17 @@ void	move_down_bonus(t_struc *nb)
 			game_over(nb);
 		else if (nb->tab[nb->pos->p_ligne][nb->pos->p_col] == 'E')
 		{
-			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_mr1, nb->pos->p_col * nb->mini->img_width, (nb->pos->p_ligne + 1)* nb->mini->img_height);
+			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_bas, nb->pos->p_col * nb->mini->img_width, (nb->pos->p_ligne + 1)* nb->mini->img_height);
 			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->exit, nb->pos->p_col * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 		}
 		else
 		{
-			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_mr1, nb->pos->p_col * nb->mini->img_width, (nb->pos->p_ligne + 1) * nb->mini->img_height);
+			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->player_bas, nb->pos->p_col * nb->mini->img_width, (nb->pos->p_ligne + 1) * nb->mini->img_height);
 			mlx_put_image_to_window(nb->mini->mlx, nb->mini->window, nb->mini->herbe, nb->pos->p_col * nb->mini->img_width, nb->pos->p_ligne * nb->mini->img_height);
 		}
 		nb->pos->p_ligne += 1;
 		nb->count_move++;
+		ft_printf("%d = number of move\n", nb->count_move);
 	}
 }
 

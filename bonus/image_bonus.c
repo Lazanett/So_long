@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 15:16:29 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/19 10:30:13 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/19 12:45:27 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,8 @@ void	tab_img_bonus(t_struc *nb)
 	while (i < nb->ligne)
 	{
 		j = 0;
-		while (j <= nb->colonne && nb->tab[i][j] != '\0') // dire a will
+		while (j <= nb->colonne && nb->tab[i][j] != '\0')
 		{
-			//printf("%c\n", nb->tab[i][j]);
 			if (nb->tab[i][j] == '1')
 			{
 				mlx_put_image_to_window(nb->mini->mlx, \
@@ -61,8 +60,9 @@ void	tab_img_bonus(t_struc *nb)
 			{
 				mlx_put_image_to_window(nb->mini->mlx, \
 				nb->mini->window, nb->mini->attack1, \
-				(j * nb->mini->img_width), (i * nb->mini->img_height)); 
-				// peut etre mettre animation monstre
+				(j * nb->mini->img_width), (i * nb->mini->img_height));
+				//nb->pos->m_ligne = i;
+				//nb->pos->m_col = j;
 			}
 			j++;
 		}
@@ -71,11 +71,9 @@ void	tab_img_bonus(t_struc *nb)
 }
 
 
+
 void	convertion(t_struc *nb)
 {
-	nb->mini->player_bas = mlx_xpm_file_to_image(nb->mini->mlx, PLAYER_BAS, &nb->mini->img_width, &nb->mini->img_height);
-	if (nb->mini->player_bas == NULL)
-		verif_img(nb);
 	nb->mini->player_ml2 = mlx_xpm_file_to_image(nb->mini->mlx, PLAYER_ML2, &nb->mini->img_width, &nb->mini->img_height);
 	if (nb->mini->player_ml2 == NULL)
 		verif_img(nb);

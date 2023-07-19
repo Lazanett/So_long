@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:13:25 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/18 18:44:10 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/19 12:47:15 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ int	main(int ac, char **av)
 				if (elem.mini->mlx == NULL)
 					return (1);
 				elem.mini->window = mlx_new_window(elem.mini->mlx, \
-						((elem.colonne - 1) * 48), ((elem.ligne + 1) * 48), "Game");
+						((elem.colonne - 1) * 48), (elem.ligne * 48), "Game");
 				tab_img_bonus(&elem);
 				mlx_hook(elem.mini->window, KeyPress, 1L<<0, ft_key_bonus , &elem);
 				mlx_hook(elem.mini->window, ClientMessage, 1L<<5, ft_mouse , &elem);
@@ -63,6 +63,7 @@ int	ft_key_bonus(int keycode, t_struc *nb)
 int	victory_bonus(t_struc *nb)
 {
 	nb->count_move++;
+	ft_printf("%d = number of move\n", nb->count_move);
 	clear_img_bonus(nb);
 	if (nb->mini->window)
 	{
@@ -98,9 +99,9 @@ int	game_over(t_struc *nb)
 
 int	ft_game_bonus_ok(t_struc *nb)
 {
-	if (ft_map_available(nb) == 0)
+	if (ft_size_map(nb) == 0)
 	{
-		if (ft_size_map(nb) == 0)
+		if (ft_map_available(nb) == 0)
 		{
 			if (first_line(nb) == 0 && left_col(nb) == 0 && \
 				right_col(nb) == 0 && last_line(nb) == 0 && invalid_char_bonus(nb) == 0)

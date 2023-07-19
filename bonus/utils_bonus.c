@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 15:17:59 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/18 15:09:18 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/19 11:18:53 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,15 @@ void	clear_img_bonus(t_struc *nb)
 		mlx_destroy_image(nb->mini->mlx, nb->mini->tree);
 	if (nb->mini->player_mr1)
 		mlx_destroy_image(nb->mini->mlx, nb->mini->player_mr1);
+	if (nb->mini->player_ml1)
+		mlx_destroy_image(nb->mini->mlx, nb->mini->player_ml1);
+	if (nb->mini->player_bas)
+		mlx_destroy_image(nb->mini->mlx, nb->mini->player_bas);
 	clear_player(nb);
 }
 
 void	clear_player(t_struc *nb)
 {
-	if (nb->mini->player_bas)
-		mlx_destroy_image(nb->mini->mlx, nb->mini->player_bas);
 	if (nb->mini->player_ml2)
 		mlx_destroy_image(nb->mini->mlx, nb->mini->player_ml2);
 	if (nb->mini->player_ml3)
