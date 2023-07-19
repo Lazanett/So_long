@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/16 18:20:26 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/17 18:19:31 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/18 16:44:43 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,12 +95,14 @@ typedef struct s_mini
 //--------------------------BACKTRAKING.C------------------------------------//
 void	chemin(t_struc *nb, int j, int i);
 int		backtraking_ok(t_struc *nb);
+
 //--------------------------------------------------------------------------//
 
 //----------------------------IMAGE.C---------------------------------------//
 void	tab_img(t_struc *nb);
 void	verif_img(t_struc *nb);
 void	convertion_base(t_struc *nb);
+//---------------------------------------------------------------------------//
 
 //--------------------------------INIT.C------------------------------------//
 void	ft_init_struc(t_struc *elem);
@@ -115,10 +117,10 @@ int		ft_key(int keycode, t_struc *nb);
 int		ft_mouse(t_struc *nb);
 //--------------------------------------------------------------------------//
 
-//--------------------------------MAIN.C------------------------------------//
-int	check_argv(char *av, char *search);
+//--------------------------------CHECK_ARG.C--------------------------------//
+int		check_argv(char *av, char *search);
 int		check_absolu(char *av, char *search, int len);
-//--------------------------------------------------------------------------//
+//-------------------------------------------------------------------------//
 
 //-----------------------MOVE.C---------------------------------------------//
 void	move_up(t_struc *nb);
@@ -137,12 +139,17 @@ int		ft_count_line(t_struc *elem);
 char	**ft_malloc_tab(t_struc *elem);
 //--------------------------------------------------------------------------//
 
-//--------------------------SIDE_MAP.C---------------------------------------//
+//--------------------------------------MAIN.C--------------------------------//
 int		ft_game_ok(t_struc *nb);
+//---------------------------------------------------------------------------//
+
+//--------------------------SIDE_MAP.C---------------------------------------//
+
 int		first_line(t_struc *nb);
 int		left_col(t_struc *nb);
 int		right_col(t_struc *nb);
 int		last_line(t_struc *nb);
+int		invalid_char(t_struc *nb);
 //--------------------------------------------------------------------------//
 
 //-----------------------------UTILS.C---------------------------------------//
@@ -152,15 +159,37 @@ void	exit_game(t_struc *nb);
 void	free_parsing(t_struc *nb);
 //--------------------------------------------------------------------------//
 
-//---------------------IMAGE_BONUS-----------------------------------------//
+//-------------------------------MAIN_BONUS.C------------------------------//
+int		ft_key_bonus(int keycode, t_struc *nb);
+int		victory_bonus(t_struc *nb);
+int		game_over(t_struc *nb);
+int		ft_game_bonus_ok(t_struc *nb);
+
+//--------------------------------------------------------------------------//
+
+//-------------------------BACKTRAKING_BONUS.C----------------------------//
+int		backtraking_bonus_ok(t_struc *nb);
+void	chemin_bonus(t_struc *nb, int j, int i);
+int		invalid_char_bonus(t_struc *nb);
+//-------------------------------------------------------------------------//
+
+//----------------------IMAGE_BONUS-----------------------------------------//
+void	tab_img_bonus(t_struc *nb);
 void	convertion(t_struc *nb);
-void	convertion2(t_struc *nb);
 void	convertion_attack(t_struc *nb);
 //--------------------------------------------------------------------------//
 
+//-----------------------------MOVE_BONUS----------------------------------//
+void	move_up_bonus(t_struc *nb);
+void	move_left_bonus(t_struc *nb);
+void	move_right_bonus(t_struc *nb);
+void	move_down_bonus(t_struc *nb);
+int		move_bonus_ok(t_struc *nb);
+//--------------------------------------------------------------------------//
+
 //------------------------UTILS_BONUS----------------------------------------//
+void	clear_img_bonus(t_struc *nb);
 void	clear_player(t_struc *nb);
 void	clear_attack(t_struc *nb);
-
 //--------------------------------------------------------------------------//
 #endif
