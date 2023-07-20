@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 11:08:38 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/19 12:52:35 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/19 18:12:42 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 int	backtraking_ok(t_struc *nb)
 {
 	chemin(nb, nb->pos->p_ligne, nb->pos->p_col);
-
 	if (nb->collect == 0 && nb->exit == 0)
 	{
 		ft_free(nb->tab_copy);

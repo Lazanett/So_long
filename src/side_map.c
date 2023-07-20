@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/04 10:03:44 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/19 14:59:34 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/20 11:38:10 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	first_line(t_struc *nb)
 	while (i < 1)
 	{
 		j = 0;
-		while (j < (nb->colonne - 1)) // + \n
+		while (j < (nb->colonne - 1))
 		{
 			if (nb->tab[i][j] == '1')
 				count++;
@@ -31,7 +31,7 @@ int	first_line(t_struc *nb)
 		}
 		i++;
 	}
-	if ((count + 1) == nb->colonne) // + \n
+	if ((count + 1) == nb->colonne)
 		return (0);
 	else
 	{
@@ -80,7 +80,7 @@ int	right_col(t_struc *nb)
 	count = 0;
 	while (i < nb->ligne)
 	{
-		j = nb->colonne - 2; // - \n et \0
+		j = nb->colonne - 2;
 		while (j < nb->colonne)
 		{
 			if (nb->tab[i][j] == '1')
@@ -114,15 +114,14 @@ int	last_line(t_struc *nb)
 			count++;
 		j++;
 	}
-	if ((count + 1) == nb->colonne) // + \n
-		return(0);
+	if ((count + 1) == nb->colonne)
+		return (0);
 	else
 	{
 		ft_putendl_fd("Error : side map invalid", 2);
 		free_parsing(nb);
 		return (1);
 	}
-
 }
 
 int	invalid_char(t_struc *nb)

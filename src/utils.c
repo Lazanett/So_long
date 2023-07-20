@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 15:08:13 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/19 13:40:42 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/20 11:37:04 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ int	victory(t_struc *nb)
 	free(nb->pos);
 	free(nb->mini->mlx);
 	free(nb->mini);
-	//ft_free(nb->tab_copy);
 	ft_free(nb->tab);
 	exit (0);
 }
@@ -43,7 +42,6 @@ void	exit_game(t_struc *nb)
 	free(nb->pos);
 	free(nb->mini->mlx);
 	free(nb->mini);
-	//ft_free(nb->tab_copy);
 	ft_free(nb->tab);
 	exit(0);
 }

@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/13 17:14:53 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/19 11:10:53 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/20 11:16:47 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	tab_img(t_struc *nb)
 	while (i < nb->ligne)
 	{
 		j = 0;
-		while (j <= nb->colonne && nb->tab[i][j] != '\0') // dire a will
+		while (j <= nb->colonne && nb->tab[i][j] != '\0')
 		{
 			if (nb->tab[i][j] == '1')
 			{
@@ -30,34 +30,40 @@ void	tab_img(t_struc *nb)
 				nb->mini->window, nb->mini->tree, \
 				(j * nb->mini->img_width), (i * nb->mini->img_height));
 			}
-			if (nb->tab[i][j] == '0')
-			{
-				mlx_put_image_to_window(nb->mini->mlx, \
-				nb->mini->window, nb->mini->herbe, \
-				(j * nb->mini->img_width), (i * nb->mini->img_height));
-			}
-			if (nb->tab[i][j] == 'P')
-			{
-				mlx_put_image_to_window(nb->mini->mlx, \
-				nb->mini->window, nb->mini->player_mr1, \
-				(j * nb->mini->img_width), (i * nb->mini->img_height));
-			}
-			if (nb->tab[i][j] == 'E')
-			{
-				mlx_put_image_to_window(nb->mini->mlx, \
-				nb->mini->window, nb->mini->exit, \
-				(j * nb->mini->img_width), (i * nb->mini->img_height));
-			}
-			if (nb->tab[i][j] == 'C')
-			{
-				mlx_put_image_to_window(nb->mini->mlx, \
-				nb->mini->window, nb->mini->crystal, \
-				(j * nb->mini->img_width), (i * nb->mini->img_height));
-				nb->collect++;
-			}
+			else
+				tab_img2(nb, i, j);
 			j++;
 		}
 		i++;
+	}
+}
+
+void	tab_img2(t_struc *nb, int i, int j)
+{
+	if (nb->tab[i][j] == '0')
+	{
+		mlx_put_image_to_window(nb->mini->mlx, \
+		nb->mini->window, nb->mini->herbe, \
+		(j * nb->mini->img_width), (i * nb->mini->img_height));
+	}
+	if (nb->tab[i][j] == 'P')
+	{
+		mlx_put_image_to_window(nb->mini->mlx, \
+		nb->mini->window, nb->mini->player_mr1, \
+		(j * nb->mini->img_width), (i * nb->mini->img_height));
+	}
+	if (nb->tab[i][j] == 'E')
+	{
+		mlx_put_image_to_window(nb->mini->mlx, \
+		nb->mini->window, nb->mini->exit, \
+		(j * nb->mini->img_width), (i * nb->mini->img_height));
+	}
+	if (nb->tab[i][j] == 'C')
+	{
+		mlx_put_image_to_window(nb->mini->mlx, \
+		nb->mini->window, nb->mini->crystal, \
+		(j * nb->mini->img_width), (i * nb->mini->img_height));
+		nb->collect++;
 	}
 }
 
@@ -95,17 +101,12 @@ void	convertion_base(t_struc *nb)
 
 void	convertion_base2(t_struc *nb)
 {
-	nb->mini->player_bas = mlx_xpm_file_to_image(nb->mini->mlx, PLAYER_BAS, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->player_bas = mlx_xpm_file_to_image(nb->mini->mlx, \
+			PLAYER_BAS, &nb->mini->img_width, &nb->mini->img_height);
 	if (nb->mini->player_bas == NULL)
-	{	
-		printf("coucou");
 		verif_img(nb);
-	}
-	nb->mini->player_ml1 = mlx_xpm_file_to_image(nb->mini->mlx, PLAYER_ML1, &nb->mini->img_width, &nb->mini->img_height);
+	nb->mini->player_ml1 = mlx_xpm_file_to_image(nb->mini->mlx, \
+			PLAYER_ML1, &nb->mini->img_width, &nb->mini->img_height);
 	if (nb->mini->player_ml1 == NULL)
-	{
-		printf("coucou2");
 		verif_img(nb);
-	}
-		
 }
