@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 12:09:48 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/20 14:14:50 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:06:33 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,11 +40,8 @@ int	arg(char *av, char *search, int i, int len)
 	if (search[i] == '\0')
 		return (0);
 	else
-	{
-		ft_putendl_fd("Error : invalid name of map", 2);
-		exit(0);
-		return (1);
-	}
+		error_name();
+	return (1);
 }
 
 int	error_name(void)

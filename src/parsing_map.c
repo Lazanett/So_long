@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/19 11:03:42 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/20 12:27:43 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/20 16:49:52 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@ int	ft_size_map(t_struc *nb)
 
 	i = 0;
 	count = 0;
+	size_map(nb);
 	while (i < (nb->ligne - 1))
 	{
 		j = 0;
@@ -46,6 +47,15 @@ int	ft_size_map(t_struc *nb)
 		ft_putendl_fd("Error : size of map invalid", 2);
 		free_parsing(nb);
 		return (1);
+	}
+}
+
+void	size_map(t_struc *nb)
+{
+	if (nb->ligne > 21 || nb->colonne > 41)
+	{
+		ft_putendl_fd("Error : size of map invalid", 2);
+		free_parsing(nb);
 	}
 }
 

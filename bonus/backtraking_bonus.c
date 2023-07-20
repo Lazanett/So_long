@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:16:31 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/19 13:32:38 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:51:07 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,17 +39,17 @@ void	chemin_bonus(t_struc *nb, int j, int i)
 		if (nb->tab_copy[j][i] == 'E')
 			nb->exit--;
 		nb->tab_copy[j][i] = '1';
-		if ((nb->tab_copy[j + 1][i] != '1' && nb->tab_copy[j + 1][i] != 'M')&& \
-				nb->tab_copy[j + 1][i] != '\0')
+		if (nb->tab_copy[j + 1][i] != '1' && nb->tab_copy[j + 1][i] != '\0' && \
+			nb->tab_copy[j + 1][i] != 'M')
 			chemin_bonus(nb, j + 1, i);
-		if ((nb->tab_copy[j][i + 1] != '1' && nb->tab_copy[j][i + 1] != 'M') && \
-				nb->tab_copy[j][i + 1] != '\0')
+		if (nb->tab_copy[j][i + 1] != '1' && nb->tab_copy[j][i + 1] != '\0' && \
+			nb->tab_copy[j][i + 1] != 'M')
 			chemin_bonus(nb, j, i + 1);
-		if ((nb->tab_copy[j - 1][i] != '1' && nb->tab_copy[j - 1][i] != 'M') && \
-				nb->tab_copy[j - 1][i] != '\0')
+		if (nb->tab_copy[j - 1][i] != '1' && nb->tab_copy[j - 1][i] != '\0' && \
+			nb->tab_copy[j - 1][i] != 'M')
 			chemin_bonus(nb, j - 1, i);
-		if ((nb->tab_copy[j][i - 1] != '1' && nb->tab_copy[j][i - 1] != 'M') && \
-				nb->tab_copy[j][i - 1] != '\0')
+		if (nb->tab_copy[j][i - 1] != '1' && nb->tab_copy[j][i - 1] != '\0' && \
+			nb->tab_copy[j][i - 1] != 'M')
 			chemin_bonus(nb, j, i - 1);
 		return ;
 	}

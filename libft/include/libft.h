@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 10:51:25 by lazanett          #+#    #+#             */
-/*   Updated: 2023/06/28 18:55:00 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/20 14:49:33 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@
 # include <sys/stat.h>
 # include <fcntl.h>
 # include <stdarg.h>
-#include <errno.h>
+# include <errno.h>
 
 typedef struct s_list
 {

@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 15:17:59 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/19 11:18:53 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/20 16:24:46 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,42 @@ void	clear_attack(t_struc *nb)
 		mlx_destroy_image(nb->mini->mlx, nb->mini->attack3);
 	if (nb->mini->attack4)
 		mlx_destroy_image(nb->mini->mlx, nb->mini->attack4);
+}
+
+int	victory_bonus(t_struc *nb)
+{
+	nb->count_move++;
+	ft_printf("%d = number of move\n", nb->count_move);
+	ft_printf("\\\\\\\\\\\\\\VICTOIRE//////////////\n");
+	clear_img_bonus(nb);
+	if (nb->mini->window)
+	{
+		mlx_clear_window(nb->mini->mlx, nb->mini->window);
+		mlx_destroy_window(nb->mini->mlx, nb->mini->window);
+	}
+	mlx_destroy_display(nb->mini->mlx);
+	free(nb->pos);
+	free(nb->mini->mlx);
+	free(nb->mini);
+	ft_free(nb->tab);
+	exit (0);
+}
+
+int	game_over(t_struc *nb)
+{
+	nb->count_move++;
+	ft_printf("%d = number of move\n", nb->count_move);
+	ft_printf("\\\\\\\\\\\\\\GAME_OVER//////////////\n");
+	clear_img_bonus(nb);
+	if (nb->mini->window)
+	{
+		mlx_clear_window(nb->mini->mlx, nb->mini->window);
+		mlx_destroy_window(nb->mini->mlx, nb->mini->window);
+	}
+	mlx_destroy_display(nb->mini->mlx);
+	free(nb->pos);
+	free(nb->mini->mlx);
+	free(nb->mini);
+	ft_free(nb->tab);
+	exit (0);
 }

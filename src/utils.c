@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/14 15:08:13 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/20 11:37:04 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/20 15:08:33 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	victory(t_struc *nb)
 {
 	nb->count_move++;
 	ft_printf("%d = number of move\n", nb->count_move);
+	ft_printf("\\\\\\\\\\\\\\VICTOIRE//////////////\n");
 	clear_img(nb);
 	if (nb->mini->window)
 	{

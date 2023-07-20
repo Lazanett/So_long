@@ -6,7 +6,7 @@
 #    By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/05/16 13:51:45 by lazanett          #+#    #+#              #
-#    Updated: 2023/07/19 11:46:30 by lazanett         ###   ########.fr        #
+#    Updated: 2023/07/20 15:15:54 by lazanett         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,18 +30,23 @@ SRC= 	src/main.c\
 		src/move.c\
 		src/image.c\
 		src/utils.c\
+		src/move_exit.c\
+		src/init_tab.c\
 
 SRC_BONUS = src/parsing_map.c\
 			bonus/backtraking_bonus.c\
 			bonus/image_bonus.c\
 			bonus/main_bonus.c\
 			bonus/move_bonus.c\
+			bonus/move_exit_bonus.c\
 			bonus/utils_bonus.c\
 			src/check_arg.c\
 			src/side_map.c\
+			src/init_tab.c\
 			src/key.c\
 			src/init.c\
 			src/move.c\
+			src/move_exit.c\
 			src/image.c\
 			src/utils.c\
 			
@@ -58,7 +63,7 @@ OBJ = $(SRC:.c=.o)
 
 OBJ_BONUS = $(SRC_BONUS:.c=.o)
 
-all:  $(NAME) $(NAME_BONUS)
+all:  $(NAME)
 
 bonus: $(NAME_BONUS)
 

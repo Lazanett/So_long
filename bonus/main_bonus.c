@@ -6,7 +6,7 @@
 /*   By: lazanett <lazanett@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/07/18 11:13:25 by lazanett          #+#    #+#             */
-/*   Updated: 2023/07/19 12:47:15 by lazanett         ###   ########.fr       */
+/*   Updated: 2023/07/20 16:24:56 by lazanett         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,23 +30,22 @@ int	main(int ac, char **av)
 				elem.mini->window = mlx_new_window(elem.mini->mlx, \
 						((elem.colonne - 1) * 48), (elem.ligne * 48), "Game");
 				tab_img_bonus(&elem);
-				mlx_hook(elem.mini->window, KeyPress, 1L<<0, ft_key_bonus , &elem);
-				mlx_hook(elem.mini->window, ClientMessage, 1L<<5, ft_mouse , &elem);
+				mlx_hook(elem.mini->window, KeyPress, 1L << 0, ft_key_b, &elem);
+				mlx_hook(elem.mini->window, ClientMessage, 1L << 5, \
+				ft_mouse_b, &elem);
 				mlx_loop(elem.mini->mlx);
 			}
 		}
 	}
 	else
 		ft_putendl_fd("Error : bad number of argument", 2);
-	exit(0);
-	return (0);
 }
 
-int	ft_key_bonus(int keycode, t_struc *nb)
+int	ft_key_b(int keycode, t_struc *nb)
 {
 	if (keycode == XK_Escape)
 	{
-		exit_game(nb);
+		exit_game_b(nb);
 		exit(0);
 	}
 	if (keycode == XK_Up || keycode == XK_w)
@@ -60,28 +59,14 @@ int	ft_key_bonus(int keycode, t_struc *nb)
 	return (0);
 }
 
-int	victory_bonus(t_struc *nb)
+int	ft_mouse_b(t_struc *nb)
 {
-	nb->count_move++;
-	ft_printf("%d = number of move\n", nb->count_move);
-	clear_img_bonus(nb);
-	if (nb->mini->window)
-	{
-		mlx_clear_window(nb->mini->mlx, nb->mini->window);
-		mlx_destroy_window(nb->mini->mlx, nb->mini->window);
-	}
-	mlx_destroy_display(nb->mini->mlx);
-	free(nb->pos);
-	free(nb->mini->mlx);
-	free(nb->mini);
-	//ft_free(nb->tab_copy);
-	ft_free(nb->tab);
-	exit (0);
+	exit_game_b(nb);
+	exit(0);
 }
 
-int	game_over(t_struc *nb)
+void	exit_game_b(t_struc *nb)
 {
-	nb->count_move++;
 	clear_img_bonus(nb);
 	if (nb->mini->window)
 	{
@@ -92,9 +77,8 @@ int	game_over(t_struc *nb)
 	free(nb->pos);
 	free(nb->mini->mlx);
 	free(nb->mini);
-	//ft_free(nb->tab_copy);
 	ft_free(nb->tab);
-	exit (0);
+	exit(0);
 }
 
 int	ft_game_bonus_ok(t_struc *nb)
@@ -104,8 +88,9 @@ int	ft_game_bonus_ok(t_struc *nb)
 		if (ft_map_available(nb) == 0)
 		{
 			if (first_line(nb) == 0 && left_col(nb) == 0 && \
-				right_col(nb) == 0 && last_line(nb) == 0 && invalid_char_bonus(nb) == 0)
-					return (0);
+				right_col(nb) == 0 && last_line(nb) == 0 && \
+				invalid_char_bonus(nb) == 0)
+				return (0);
 			else
 			{
 				ft_putendl_fd("Error : invalid caractere", 2);
