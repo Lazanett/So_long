@@ -22,7 +22,7 @@ int	backtraking_bonus_ok(t_struc *nb)
 	}	
 	else
 	{
-		ft_putendl_fd("backtraking impossible", 2);
+		ft_putendl_fd("Error : backtraking impossible", 2);
 		free_parsing(nb);
 		return (1);
 	}
